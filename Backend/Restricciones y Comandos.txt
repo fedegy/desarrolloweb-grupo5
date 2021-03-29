@@ -1,0 +1,16 @@
+----------------------Versión Node JS---------------------
+13.14.0
+Se recomienda usar dicha versión ya que esta siendo desarrollado en  Windows 7 y existen problemas de compatibilidad en versiones más recientes.
+
+--------------------Comandos Usados--------------------------
+npm init -y
+Crea package.json y acepta todas las dependencias requeridas
+
+npm install express morgan
+Instala express y morgan para el uso de mysql
+
+npm install express body-parser mysql
+Instala mysql junto a dependencias necesarias de express
+
+npm install nodemon
+Instala nodemon
