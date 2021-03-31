@@ -46,6 +46,14 @@ app.post('/registrar_alumno',(req,res)=>{
         res.send("Se registro con éxito el alumno.");
     })
 }); 
+
+//Realizar el login del usuario registrado
+app.post('login',(req,res)=>{
+    const txt_login_carnet=req.body.carnet_login_get;
+    const txt_login_contrasena=req.body.constrasena_login_get;
+})
+
+
 //Puerto en donde sera ejecutado
 app.listen(3001,()=>{
     console.log('Servidor corriendo')
