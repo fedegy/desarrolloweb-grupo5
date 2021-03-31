@@ -16,7 +16,7 @@ SELECT*FROM registro;
 
 /*Buscar contraseña olvidada, muestra valor de la contraseña al 
 verificar si correo y carnet son iguales*/
-SELECT contrasena FROM registro where carnet=201902000 and correo="user2@example.com";
+SELECT contrasena FROM registro WHERE carnet=201902000 AND correo="user2@example.com";
 
 
 
