@@ -27,6 +27,16 @@ app.use(bodyP.urlencoded({
     extended:true
 }));
 
+/*Se añade post que obtendra parametros de componentes del lado del cliente
+(React JS)
+*/
+app.post('/registrar_alumno',(req,res)=>{
+    const txt_carnet=req.body.carnet_get;
+    const txt_nombre=req.body.nombre_get;
+    const txt_apellidos=req.body.apellidos_get;
+    const txt_contrasena=req.body.constrasena_get;
+    const txt_correo=req.body.correo_get;
+})
 
 //Puerto en donde sera ejecutado
 app.listen(3001,()=>{
