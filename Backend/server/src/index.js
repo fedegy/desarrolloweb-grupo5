@@ -9,7 +9,7 @@ const mysql=require('mysql')
 const app=exp()
 
 //Se creo conexion de base de datos
-const db=mysql.createPool({
+const base_datos=mysql.createPool({
     host:"localhost",               //Host de alojamiento de base de datos
     user:"root",                    //Usuario de host
     password:"",                    //Contraseña
@@ -27,17 +27,25 @@ app.use(bodyP.urlencoded({
     extended:true
 }));
 
-/*Se añade post que obtendra parametros de componentes del lado del cliente
+/*Se añade funcion post que obtendra parametros de componentes del lado del cliente
 (React JS)
 */
 app.post('/registrar_alumno',(req,res)=>{
-    const txt_carnet=req.body.carnet_get;
+    const txt_carnet=req.body.carnet_get;   //Se obtiene los valores de componentes de React
     const txt_nombre=req.body.nombre_get;
     const txt_apellidos=req.body.apellidos_get;
     const txt_contrasena=req.body.constrasena_get;
     const txt_correo=req.body.correo_get;
-})
 
+    //Se insertan los datos en base de datos 
+    //Usando misma estructura que el formato sql
+    const insertrar_registro="INSERT INTO registro (carnet,nombres,apellidos,contrasena,correo) VALUES (?,?,?,?,?);"
+    //Se obtienene los valores de las constantes declaradas al inicio de la función post
+    base_datos.query(insertrar_registro,[txt_carnet,txt_nombre,txt_apellidos,txt_contrasena,txt_correo],(err,result)=>{
+        //Se envia mensaje de registro exitoso
+        res.send("Se registro con éxito el alumno.");
+    })
+}); 
 //Puerto en donde sera ejecutado
 app.listen(3001,()=>{
     console.log('Servidor corriendo')
