@@ -30,4 +30,21 @@ CREATE TABLE publicacion_curso(
 INSERT INTO publicacion_curso (carnet,curso,mensaje) VALUES (201901000,'Introducción a la Programación y Computación 2','El segundo curso de programación');
 SELECT *FROM publicacion_curso;
 
+/*Tabla Crear publicación de Catedrático*/
+CREATE TABLE publicacion_catedratico(
+	carnet INT NOT NULL,
+    catedratico VARCHAR(50) NOT NULL,
+    mensaje VARCHAR(255) NOT NULL,
+    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP, /*Generar fecha y hora automaticamente*/
+    PRIMARY KEY (carnet)
+);
+
+/*Ejemplo*/
+/*Insertar datos a Publicación de Catedrático*/
+/*No se coloca fecha porque esta se generar automaticamente por medio de TIMESTAMP*/
+INSERT INTO publicacion_catedratico (carnet,catedratico,mensaje) VALUES (201902000,'Herman Veliz','Buen catedratico');
+INSERT INTO publicacion_catedratico (carnet,catedratico,mensaje) VALUES (201902002,'Herman Veliz','Imparte clases en el curso de Prácticas Iniciales del cuarto semestre');
+
+SELECT*FROM publicacion_catedratico;
+
 
