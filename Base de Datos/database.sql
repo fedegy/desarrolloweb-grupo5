@@ -48,3 +48,17 @@ INSERT INTO publicacion_catedratico (carnet,catedratico,mensaje) VALUES (2019020
 SELECT*FROM publicacion_catedratico;
 
 
+/*Filtrar por curso*/
+SELECT*FROM publicacion_curso;
+
+/*Filtrar por Catedrático*/
+SELECT*FROM publicacion_catedratico;
+
+/*Filtrar por Nombre de Curso*/
+/*Ejemplo Curso Introducción a la Programación y Computación 2*/
+SELECT carnet,curso,mensaje,fecha FROM publicacion_curso WHERE curso="Introduccion a la Programacion y Computacion 2";
+
+/*Filtrar por Nombre de Catedrático*/
+SELECT carnet,catedratico,mensaje,fecha FROM publicacion_catedratico WHERE catedratico="Herman Veliz";
+
+
