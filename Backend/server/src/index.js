@@ -42,17 +42,8 @@ app.post('/registrar_alumno',(req,res)=>{
     const insertrar_registro_sql="INSERT INTO registro (carnet,nombres,apellidos,contrasena,correo) VALUES (?,?,?,?,?);"
     //Se obtienene los valores de las constantes declaradas al inicio de la función post
     base_datos.query(insertrar_registro_sql,[txt_carnet,txt_nombre,txt_apellidos,txt_contrasena,txt_correo],(err,result)=>{
-        //Se verifica si es mayor y si los datos que se ingresaron estan correctamente
-        if(result.length>0){
-             //Se envia mensaje de registro exitoso
-            res.send("Se registro con éxito el alumno.");
-        }else{
-            /*Mensaje de error si encuentra errores al ingresar valores no válidos
-            en la base de datos*/
-            res.send("Error al ingresar los datos");
-        }
-        //Se finaliza respuesta
-        res.send();
+    //Se envia mensaje de registro exitoso
+    res.send("Se registro con éxito el alumno.");
     })
 }); 
 
@@ -103,6 +94,7 @@ app.post('/recuperar_password',(req,res)=>{
         })
     }
 });
+
 
 //Puerto en donde sera ejecutado
 app.listen(3001,()=>{
