@@ -39,11 +39,20 @@ app.post('/registrar_alumno',(req,res)=>{
 
     //Se insertan los datos en base de datos 
     //Usando misma estructura que el formato sql
-    const insertrar_registro="INSERT INTO registro (carnet,nombres,apellidos,contrasena,correo) VALUES (?,?,?,?,?);"
+    const insertrar_registro_sql="INSERT INTO registro (carnet,nombres,apellidos,contrasena,correo) VALUES (?,?,?,?,?);"
     //Se obtienene los valores de las constantes declaradas al inicio de la función post
-    base_datos.query(insertrar_registro,[txt_carnet,txt_nombre,txt_apellidos,txt_contrasena,txt_correo],(err,result)=>{
-        //Se envia mensaje de registro exitoso
-        res.send("Se registro con éxito el alumno.");
+    base_datos.query(insertrar_registro_sql,[txt_carnet,txt_nombre,txt_apellidos,txt_contrasena,txt_correo],(err,result)=>{
+        //Se verifica si es mayor y si los datos que se ingresaron estan correctamente
+        if(result.length>0){
+             //Se envia mensaje de registro exitoso
+            res.send("Se registro con éxito el alumno.");
+        }else{
+            /*Mensaje de error si encuentra errores al ingresar valores no válidos
+            en la base de datos*/
+            res.send("Error al ingresar los datos");
+        }
+        //Se finaliza respuesta
+        res.send();
     })
 }); 
 
@@ -55,9 +64,9 @@ app.post('/login',(req,res)=>{
     if(txt_login_usuario&&txt_login_contrasena){
         /*Se seleccionan los datos que se validaran de la base de datos, en este caso es
         carnet y contraseña*/
-        const validar_autenticacion="SELECT*FROM registro WHERE carnet=? AND contrasena=?";
+        const validar_autenticacion_sql="SELECT*FROM registro WHERE carnet=? AND contrasena=?";
         //Se verifican los valores existentes y si coinciden
-        base_datos.query(validar_autenticacion,[txt_login_usuario,txt_login_contrasena],(err,result)=>{
+        base_datos.query(validar_autenticacion_sql,[txt_login_usuario,txt_login_contrasena],(err,result)=>{
         //Se verifica la longitud de la respuesta si es mayor y si es correcta
         if(result.length>0){
             //Se manda mensaje en consola
@@ -71,7 +80,29 @@ app.post('/login',(req,res)=>{
     }
 });
 
-
+//Recuperación de contraseña olvidada
+app.post('/recuperar_password',(req,res)=>{
+    //Valores de componentes de React sobre contraseña olvidada
+    const txt_carnet_recuperarcontrasena=req.body.carnet_recuperarcontrasena_get;
+    const txt_correo_recuperarcontrasena=req.body.correo_recuperarcontrasena_get;
+    //Verificar datos que deben coincidir
+    if(txt_carnet_recuperarcontrasena&&txt_correo_recuperarcontrasena){
+        //Se selecciona contraseña verificando si el usuario y contraseña coincide
+        const recuperarcontra_sql="SELECT contrasena FROM registro WHERE carnet=? AND correo=?";   
+        //Se realiza la consulta
+        base_datos.query(recuperarcontra_sql,[txt_carnet_recuperarcontrasena,txt_correo_recuperarcontrasena],(err,result)=>{
+        //Se verifica si es mayor y si es correcto
+        if(result.length>0){
+            //Se muestra la contraseña
+            res.send(result);
+        }else{
+            res.send("Error, no coinciden los datos ingresados");
+        }
+        //Se finaliza la respuesta
+        res.end();
+        })
+    }
+});
 
 //Puerto en donde sera ejecutado
 app.listen(3001,()=>{
