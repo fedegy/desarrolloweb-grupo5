@@ -48,10 +48,29 @@ app.post('/registrar_alumno',(req,res)=>{
 }); 
 
 //Realizar el login del usuario registrado
-app.post('login',(req,res)=>{
-    const txt_login_carnet=req.body.carnet_login_get;
+app.post('/login',(req,res)=>{
+    const txt_login_usuario=req.body.carnet_login_get;
     const txt_login_contrasena=req.body.constrasena_login_get;
-})
+    //Se verifican que valores de los componentes deben coincidir
+    if(txt_login_usuario&&txt_login_contrasena){
+        /*Se seleccionan los datos que se validaran de la base de datos, en este caso es
+        carnet y contraseña*/
+        const validar_autenticacion="SELECT*FROM registro WHERE carnet=? AND contrasena=?";
+        //Se verifican los valores existentes y si coinciden
+        base_datos.query(validar_autenticacion,[txt_login_usuario,txt_login_contrasena],(err,result)=>{
+        //Se verifica la longitud de la respuesta si es mayor y si es correcta
+        if(result.length>0){
+            //Se manda mensaje en consola
+            res.send("Se autentico con exito");
+        }else{
+            res.send("Error, usuario o contraseña incorrecto");
+        }
+        //Finaliza respuesta
+        res.end();
+        })
+    }
+});
+
 
 
 //Puerto en donde sera ejecutado
