@@ -5,7 +5,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import AccountBoxIcon from "@material-ui/icons/AccountBox";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
@@ -38,10 +38,10 @@ export default function SignUp() {
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
+          <AccountBoxIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign up
+          Sign Up
         </Typography>
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>
@@ -115,7 +115,7 @@ export default function SignUp() {
           <Grid container justify="flex-end">
             <Grid item>
               <Link href="./" variant="body2">
-                Already have an account? Sign in
+                Already have an account? Sign In
               </Link>
             </Grid>
           </Grid>
