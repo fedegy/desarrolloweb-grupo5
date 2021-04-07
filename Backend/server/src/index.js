@@ -6,7 +6,11 @@ Se utiliza body parser para tener acceso a body y para hacer uso de post
 const bodyP = require('body-parser');
 const exp=require('express')
 const mysql=require('mysql')
+const cors=require('cors')
 const app=exp()
+app.use(cors());
+app.use(exp.json());
+
 
 //Se creo conexion de base de datos
 const base_datos=mysql.createPool({
@@ -36,7 +40,6 @@ app.post('/registrar_alumno',(req,res)=>{
     const txt_apellidos=req.body.apellidos_get;
     const txt_contrasena=req.body.constrasena_get;
     const txt_correo=req.body.correo_get;
-
     //Se insertan los datos en base de datos 
     //Usando misma estructura que el formato sql
     const insertrar_registro_sql="INSERT INTO registro (carnet,nombres,apellidos,contrasena,correo) VALUES (?,?,?,?,?);"
@@ -44,6 +47,7 @@ app.post('/registrar_alumno',(req,res)=>{
     base_datos.query(insertrar_registro_sql,[txt_carnet,txt_nombre,txt_apellidos,txt_contrasena,txt_correo],(err,result)=>{
     //Se envia mensaje de registro exitoso
     res.send("Se registro con éxito el alumno.");
+    console.log(result)
     })
 }); 
 
@@ -62,6 +66,7 @@ app.post('/login',(req,res)=>{
         if(result.length>0){
             //Se manda mensaje en consola
             res.send("Se autentico con exito");
+            console.log(result);
         }else{
             res.send("Error, usuario o contraseña incorrecto");
         }
@@ -86,6 +91,7 @@ app.post('/recuperar_password',(req,res)=>{
         if(result.length>0){
             //Se muestra la contraseña
             res.send(result);
+            console.log(result);
         }else{
             res.send("Error, no coinciden los datos ingresados");
         }
