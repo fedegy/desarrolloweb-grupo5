@@ -10,6 +10,23 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 
+global.emailContrasena='';
+global.CarnetContrasena='';
+
+
+const getValueUser = (event) =>{
+  event.preventDefault();
+  global.CarnetContrasena = event.target.value
+ }
+ 
+ const getValueCorreo = (event) =>{
+  event.preventDefault();
+  global.emailContrasena= event.target.value
+
+ }
+
+
+
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -30,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ResetPassword() {
+const ResetPassword = ({onClick}) => {
   const classes = useStyles();
 
   return (
@@ -56,6 +73,7 @@ export default function ResetPassword() {
             name="registroAcademico"
             autoComplete="registroAca"
             autoFocus
+            onChange = {getValueUser} 
           />
           <TextField
             variant="outlined"
@@ -67,6 +85,7 @@ export default function ResetPassword() {
             name="correoElectronico"
             autoComplete="correoElectronico"
             type="email"
+            onChange = {getValueCorreo} 
           />
           <Button
             type="submit"
@@ -74,6 +93,7 @@ export default function ResetPassword() {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick= {onClick}
           >
             Reiniciar
           </Button>
@@ -92,3 +112,4 @@ export default function ResetPassword() {
     </Container>
   );
 }
+export default ResetPassword

@@ -1,6 +1,6 @@
 import SignUp from "../pages/SignUp";
-import Password from "../pages/Password";
-import Principal from '../PagesLogics/LoginLogic'
+import Password from "../PagesLogics/PasswordLogic";
+import Registro from '../PagesLogics/LoginLogic'
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
         <Switch>
 
           <Route exact path="/Registro">
-            <Principal />
+            <Registro />
 
           </Route>
         </Switch>

@@ -16,19 +16,13 @@ import Container from "@material-ui/core/Container";
 const getValueUser = (event) =>{
   event.preventDefault();
   global.email = event.target.value
-  //console.log('State User Global: ', global.email );
  }
  
  const getValuePassword = (event) =>{
   event.preventDefault();
   global.password= event.target.value
-  //console.log('State Pasword Global: ', global.password );
  }
-
-
  
-
-
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),

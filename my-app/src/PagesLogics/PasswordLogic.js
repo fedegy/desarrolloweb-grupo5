@@ -1,5 +1,5 @@
 import React from 'react'
-import SignIn from '../pages/Password'
+import Password from '../pages/Password'
 
 global.email='';
 global.password='';
@@ -8,8 +8,8 @@ class Login extends React.Component{
     
 
     state = {
-        carnet_login_get: '',
-        constrasena_login_get: ''
+        carnet_recuperarcontrasena_get: '',
+        correo_recuperarcontrasena_get: ''
     }
     
        hadleChange = async e => {
@@ -17,11 +17,11 @@ class Login extends React.Component{
         console.log('se trato')
 
        try{
-        this.state.carnet_login_get = global.email;
-        this.state.constrasena_login_get = global.password;
+        this.state.carnet_recuperarcontrasena_get = global.CarnetContrasena;
+        this.state.correo_recuperarcontrasena_get = global.emailContrasena;
         console.log(this.state)
 
-        let result = await fetch('http://localhost:3001/login',{
+        let result = await fetch('http://localhost:3001/recuperar_password',{
         method: 'post',
         headers: {
             'Accept':'application/json',
@@ -37,9 +37,10 @@ class Login extends React.Component{
     }
 
     render(){ 
+      
         return(
             <div >
-            <SignIn 
+            <Password 
             onClick= {this.hadleChange} />
             </div>
         )
