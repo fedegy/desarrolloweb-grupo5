@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
     display: "flex",
-    flexDirection: "column",
+    flexDirection: "column", 
     alignItems: "center",
   },
   avatar: {
@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
-}));
+}));  
 
 export default function SignUp() {
   const classes = useStyles();
@@ -41,7 +41,9 @@ export default function SignUp() {
           <AccountBoxIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Registrarte
+
+        Registrarte
+
         </Typography>
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>
@@ -97,7 +99,10 @@ export default function SignUp() {
                 required
                 fullWidth
                 name="contraseña"
-                label="Contraseña"
+
+
+                label="contraseña"
+
                 type="password"
                 id="contraseña"
                 autoComplete="contraseña-actual"
@@ -115,7 +120,7 @@ export default function SignUp() {
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link href="./" variant="body2">
+              <Link href="./Registro" variant="body2">
                 ¿Ya tienes una cuenta? Inicia Sesión
               </Link>
             </Grid>

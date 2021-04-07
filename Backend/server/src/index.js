@@ -67,8 +67,10 @@ app.post('/login',(req,res)=>{
             //Se manda mensaje en consola
             res.send("Se autentico con exito");
             console.log(result);
+            console.log("Se autentico con exito");
         }else{
             res.send("Error, usuario o contraseña incorrecto");
+            console.log("Error, usuario o contraseña incorrecto");
         }
         //Finaliza respuesta
         res.end();
@@ -92,8 +94,10 @@ app.post('/recuperar_password',(req,res)=>{
             //Se muestra la contraseña
             res.send(result);
             console.log(result);
+            console.log('Exitoso ')
         }else{
             res.send("Error, no coinciden los datos ingresados");
+            console.log('Error ')
         }
         //Se finaliza la respuesta
         res.end();

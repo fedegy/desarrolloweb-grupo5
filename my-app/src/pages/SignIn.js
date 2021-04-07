@@ -12,6 +12,23 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 
+
+const getValueUser = (event) =>{
+  event.preventDefault();
+  global.email = event.target.value
+  //console.log('State User Global: ', global.email );
+ }
+ 
+ const getValuePassword = (event) =>{
+  event.preventDefault();
+  global.password= event.target.value
+  //console.log('State Pasword Global: ', global.password );
+ }
+
+
+ 
+
+
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -31,8 +48,9 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
 }));
+ 
 
-export default function SignIn() {
+const SignIn = ({onClick}) => {
   const classes = useStyles();
 
   return (
@@ -56,6 +74,7 @@ export default function SignIn() {
             name="registroAcademico"
             autoComplete="registroAca"
             autoFocus
+            onChange = {getValueUser} 
           />
           <TextField
             variant="outlined"
@@ -67,6 +86,7 @@ export default function SignIn() {
             type="password"
             id="contraseña"
             autoComplete="contraseña-actual"
+            onChange = {getValuePassword} 
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
@@ -78,6 +98,8 @@ export default function SignIn() {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick= {onClick}
+         
           >
             Ingresar
           </Button>
@@ -88,7 +110,7 @@ export default function SignIn() {
               </Link>
             </Grid>
             <Grid item>
-              <Link href="./registro" variant="body2">
+              <Link href="./Nuevo-Usuario" variant="body2">
                 {"¿No tienes una cuenta? Crea una"}
               </Link>
             </Grid>
@@ -98,3 +120,5 @@ export default function SignIn() {
     </Container>
   );
 }
+
+export default SignIn

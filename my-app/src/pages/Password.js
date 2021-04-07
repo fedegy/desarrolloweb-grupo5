@@ -41,7 +41,9 @@ export default function ResetPassword() {
           <VpnKeyIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Reiniciar Contraseña
+
+        Reiniciar Contraseña
+
         </Typography>
         <form className={classes.form} noValidate>
           <TextField
@@ -77,8 +79,11 @@ export default function ResetPassword() {
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link href="./" variant="body2">
-                Inicio de Sesión
+
+
+              <Link href="./Registro" variant="body2">
+              Inicio de Sesión
+
               </Link>
             </Grid>
           </Grid>

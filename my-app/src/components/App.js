@@ -1,6 +1,6 @@
-import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
 import Password from "../pages/Password";
+import Principal from '../pages/Principal'
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
@@ -8,8 +8,10 @@ function App() {
     <Router>
       <div className="container">
         <Switch>
-          <Route exact path="/registro">
-            <SignUp />
+
+          <Route exact path="/Registro">
+            <Principal />
+
           </Route>
         </Switch>
         <Switch>
@@ -18,11 +20,11 @@ function App() {
           </Route>
         </Switch>
         <Switch>
-          <Route exact path="/">
-            <SignIn />
+          <Route exact path="/Nuevo-Usuario">
+            <SignUp />
           </Route>
         </Switch>
-      </div>
+      </div> 
     </Router>
   );
 } 
