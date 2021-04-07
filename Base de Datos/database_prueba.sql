@@ -37,6 +37,7 @@ CREATE TABLE publicacion(
     
 );
 
+
 SELECT*FROM publicacion;
 
 
@@ -56,6 +57,22 @@ CREATE TABLE cursos(
     creditos INT NOT NULL,
     PRIMARY KEY (id_curso)
 );
+
+
+CREATE TABLE cursos_aprobados(
+	id_curso INT NOT NULL,
+    carnet INT NOT NULL,
+    nombre_curso VARCHAR(100) NOT NULL,
+    creditos INT NOT NULL,
+    PRIMARY KEY (id_curso)
+);
+
+
+SELECT*FROM cursos_aprobados;
+INSERT INTO cursos_aprobados (id_curso,carnet,nombre_curso,creditos) VALUES (283,201901000,'Mirna Ivonne Aldana Larrazabal',4);
+SELECT creditos FROM cursos_aprobados WHERE carnet=201901000;
+
+
 
 INSERT INTO cursos (id_curso,nombre_curso,profesor,creditos) VALUES (283,'Analisis y Diseño de Sistemas 1','Mirna Ivonne Aldana Larrazabal',4);
 INSERT INTO cursos (id_curso,nombre_curso,profesor,creditos) VALUES (785,'Analisis y Diseño de Sistemas 2','Claudia Liceth Rojas Morales',5);
