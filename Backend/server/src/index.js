@@ -47,7 +47,7 @@ app.post('/registrar_alumno',(req,res)=>{
     base_datos.query(insertrar_registro_sql,[txt_carnet,txt_nombre,txt_apellidos,txt_contrasena,txt_correo],(err,result)=>{
     //Se envia mensaje de registro exitoso
     res.send("Se registro con éxito el alumno.");
-    console.log(result)
+    console.log(res)
     })
 }); 
 
@@ -99,6 +99,14 @@ app.post('/recuperar_password',(req,res)=>{
         res.end();
         })
     }
+});
+
+app.get('/mostrar_estudiantes',(req,res)=>{
+    const mEstudiantes="SELECT*FROM registro;"
+    base_datos.query(mEstudiantes,(err,result)=>{
+        console.log(result);
+        res.send(result)
+    })
 });
 
 
