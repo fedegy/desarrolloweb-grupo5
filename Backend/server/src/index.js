@@ -47,6 +47,7 @@ app.post('/registrar_alumno',(req,res)=>{
     base_datos.query(insertrar_registro_sql,[txt_carnet,txt_nombre,txt_apellidos,txt_contrasena,txt_correo],(err,result)=>{
     //Se envia mensaje de registro exitoso
     res.send("Se registro con éxito el alumno.");
+    console.log("Se registro con éxito el alumno.");
     console.log(res)
     })
 }); 
@@ -94,10 +95,10 @@ app.post('/recuperar_password',(req,res)=>{
             //Se muestra la contraseña
             res.send(result);
             console.log(result);
-            console.log('Exitoso ')
+            console.log('Recuperar contrasena exitoso')
         }else{
             res.send("Error, no coinciden los datos ingresados");
-            console.log('Error ')
+            console.log("Error, no coinciden los datos ingresados")
         }
         //Se finaliza la respuesta
         res.end();

@@ -1,6 +1,6 @@
 import SignUp from "../pages/SignUp";
 import Password from "../pages/Password";
-import Principal from '../pages/Principal'
+import Principal from '../PagesLogics/LoginLogic'
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {

@@ -1,5 +1,5 @@
 import React from 'react'
-import SignIn from './SignIn'
+import SignIn from '../pages/SignIn'
 
 global.email='';
 global.password='';
