@@ -25,19 +25,17 @@ class ExercisesForm extends React.Component{
                     onSubmit={this.hadleSubmit}
                 >
                     <br/>
+                    
                     <div className="form-group">
                     <label>
                         Profesor
-                         <input 
+                    <input 
                       type="radio"
                       value="Profesor"
                       name="title"
                       checked={value === "Profesor"}
                       onChange={onChange}
-                     
-                       
                     />
-
 
                     </label> <br/>
                     <label>
@@ -48,11 +46,11 @@ class ExercisesForm extends React.Component{
                         value="Curso"
                         checked={value === "Curso"}
                         onChange={onChange}
-                       
                     />
 
                     </label>
                       </div>
+
                        <br/>
                      <div className="form-group">
                         <input 

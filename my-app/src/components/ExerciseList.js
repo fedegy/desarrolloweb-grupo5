@@ -2,6 +2,9 @@ import React from 'react'
 import Card from './Card'
 
 const ExerciseList = ({exercises}) => (
+
+
+  
     <div>
         {exercises.map((exercese)=> (
                     <Card
