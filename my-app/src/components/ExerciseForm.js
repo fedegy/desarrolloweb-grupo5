@@ -7,25 +7,24 @@ class ExercisesForm extends React.Component{
         value:''
     };
 
-    hadleSubmit = e => {
-        e.preventDefault()
-        console.log(this.state)
-    }
+
+
+ 
    
-  
+    
     render(){
         const {value} = this.state
         var dat= new Date(); //Obtienes la fecha
-        const{onChange,form}= this.props
+        const{onChange,form,onSubmit}= this.props
         return (
             <center>
            <div className="container">
              <br/>
                 <form 
-                    onSubmit={this.hadleSubmit}
+                    onSubmit={onSubmit}
                 >
                     <br/>
-                    
+
                     <div className="form-group">
                     <label>
                         Profesor
@@ -73,15 +72,19 @@ class ExercisesForm extends React.Component{
                             value={form.Sujeto}
                             />
                         </div><br/>
+
+                        
                         <div className="col">
-                            <input 
-                            type="text"
-                            className="data"
-                            placeholder={dat}
-                            name="Fecha"
-                            onChange={onChange}
-                            value={form.Fecha}
-                            />
+                        <label>
+                            Fecha Actual
+                        <input 
+                        type="radio"
+                        name="Fecha"
+                        value={dat}
+                        checked={value === "no"}
+                        onChange={onChange}
+                    />  </label>
+                          
                         </div><br/>
                      </div>
                      <div className="form-group">

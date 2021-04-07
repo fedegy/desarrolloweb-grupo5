@@ -24,6 +24,18 @@ CREATE TABLE publicacion(
     PRIMARY KEY(id)
     
 );
+ /*NUEVA TABLA DE PUBLICACION*/
+CREATE TABLE publicacion(
+	id INT NOT NULL AUTO_INCREMENT,
+    title VARCHAR(50) NOT NULL,
+    description VARCHAR(510) NOT NULL,
+    Registro INT NOT NULL,
+    Sujeto VARCHAR(50) NOT NULL,
+    Fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
+    PRIMARY KEY(id)
+    
+);
 
 SELECT*FROM publicacion;
 

@@ -115,15 +115,17 @@ app.get('/mostrar_estudiantes',(req,res)=>{
 });
 
 //Creacion de publicacion 
+// ACTUALIZADO
 app.post('/crear_publicacion',(req,res)=>{
-    const carnet_publicacion=req.body.carnet_publicacion_get;
-    const sujeto_publicacion=req.body.sujeto_publicacion_get;
-    const mensaje_publicacion=req.body.mensaje_publicacion_get;
     const tipo_publicacion=req.body.tipo_publicacion_get;
+    const mensaje_publicacion=req.body.mensaje_publicacion_get;
+    const carnet_publicacion=req.body.carnet_publicacion_get;
+    const sujeto_publicacion=req.body.sujeto_publicacion_get; 
     //Se descarta ID y fecha porque se ingresan automaticamente
-    const crear_publicacionSQL='INSERT INTO publicacion (carnet,sujeto,mensaje,tipo) VALUES (?,?,?,?);'
-    base_datos.query(crear_publicacionSQL,[carnet_publicacion,sujeto_publicacion,mensaje_publicacion,tipo_publicacion],(err,result)=>{
+    const crear_publicacionSQL='INSERT INTO publicacion (title,description,Registro,Sujeto) VALUES (?,?,?,?);'
+    base_datos.query(crear_publicacionSQL,[tipo_publicacion,mensaje_publicacion,carnet_publicacion,sujeto_publicacion],(err,result)=>{
         console.log(result)
+        console.log('creacion  exitosa')
         res.send(result)
     })
 });

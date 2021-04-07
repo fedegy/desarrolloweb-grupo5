@@ -10,7 +10,7 @@ const Card = ({ title, description, Registro, Sujeto,Fecha }) => (
     style={{
         backgroundImage: `url(${circlesImg}), linear-gradient(to right, ${'#56CCF2'}  , ${ '#2F80ED'}) `
     }}
-    > 
+    >   
         <div className="card-body">
             <div className="row center">
                 <div className="col-6">
@@ -22,9 +22,9 @@ const Card = ({ title, description, Registro, Sujeto,Fecha }) => (
                     <h3 className="Sujeto">{Sujeto}</h3>
                     <h3>{description}</h3>
                     <p>{Fecha}</p>
-                    <Link to="/Comentarios">
+                    <Link to="/exercise/new"></Link>
                     <button class="redondo"> ⬇⬇⬇ </button>
-                    </Link>
+
                 </div>
             </div>
         </div>
