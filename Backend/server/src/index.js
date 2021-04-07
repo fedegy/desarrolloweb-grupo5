@@ -114,6 +114,33 @@ app.get('/mostrar_estudiantes',(req,res)=>{
     })
 });
 
+//Creacion de publicacion 
+app.post('/crear_publicacion',(req,res)=>{
+    const carnet_publicacion=req.body.carnet_publicacion_get;
+    const sujeto_publicacion=req.body.sujeto_publicacion_get;
+    const mensaje_publicacion=req.body.mensaje_publicacion_get;
+    const tipo_publicacion=req.body.tipo_publicacion_get;
+    //Se descarta ID y fecha porque se ingresan automaticamente
+    const crear_publicacionSQL='INSERT INTO publicacion (carnet,sujeto,mensaje,tipo) VALUES (?,?,?,?);'
+    base_datos.query(crear_publicacionSQL,[carnet_publicacion,sujeto_publicacion,mensaje_publicacion,tipo_publicacion],(err,result)=>{
+        console.log(result)
+        res.send(result)
+    })
+});
+
+
+
+//Ver publicacion
+app.get('/ver_publicacion',(req,res)=>{
+    //Se descarta ID y fecha porque se ingresan automaticamente
+    const ver_publicacionSQL='SELECT*FROM publicacion'
+    base_datos.query(ver_publicacionSQL,(err,result)=>{
+        console.log(result)
+        res.send(result)
+    })
+});
+
+
 
 //Puerto en donde sera ejecutado
 app.listen(3001,()=>{
