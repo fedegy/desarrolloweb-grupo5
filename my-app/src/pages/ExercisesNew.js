@@ -14,10 +14,10 @@ class ExercisesNew extends React.Component{
             Fecha: '' 
         },
         envio:{
-            title: '',
-            description: '',
-            Registro: '', 
-            Sujeto: '',
+            tipo_publicacion_get: '',
+            mensaje_publicacion_get: '',
+            carnet_publicacion_get: '', 
+            sujeto_publicacion_get: '',
         }
     }
 
@@ -27,38 +27,36 @@ class ExercisesNew extends React.Component{
                 ...this.state.form,
                 [e.target.name]: e.target.value
             }
-           
         })
     }
     
     handleSubmit = async e => {
         e.preventDefault()
-        console.log(this.state)
-     
+      
+
+        this.state.envio.tipo_publicacion_get = this.state.form.title;
+        this.state.envio.mensaje_publicacion_get = this.state.form.description;
+        this.state.envio.carnet_publicacion_get = this.state.form.Registro;
+        this.state.envio.sujeto_publicacion_get = this.state.form.Sujeto;
+        console.log(this.state.envio)
         try{
-          
-         
-    
-            let result = await fetch('http://localhost:3001/crear_publicacion',{
-            method: 'post',
-            headers: {
-                'Accept':'application/json',
-                'Content-type': 'application/json',
-            },
-            body: JSON.stringify(this.state.envio)
-            }); 
-    
-            console.log('que paso:',result)
+                let result = await fetch('http://localhost:3001/crear_publicacion',{
+                method: 'post',
+                headers: {
+                    'Accept':'application/json',
+                    'Content-type': 'application/json',
+                },
+                    body: JSON.stringify(this.state.envio)
+                }); 
+                    console.log('que paso:',result)
            }catch (error){
-            console.log('eerroor')
+                console.log('eerroor')
            }
      }
     
 
 
     render(){
-      
-        
         return (
             <div className="row">
                 <Card {...this.state.form}/>
@@ -69,13 +67,8 @@ class ExercisesNew extends React.Component{
                     form={this.state.form}
                     value={this.state.value}
                     />
-
                 </div>
-                
             </div>
-
-            
-          
         )
     }
 }
