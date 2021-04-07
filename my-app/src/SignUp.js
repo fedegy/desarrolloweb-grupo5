@@ -41,19 +41,19 @@ export default function SignUp() {
           <AccountBoxIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign Up
+          Registrarte
         </Typography>
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
-                autoComplete="fname"
-                name="firstName"
+                autoComplete="nombre"
+                name="nombre"
                 variant="outlined"
                 required
                 fullWidth
-                id="firstName"
-                label="First Name"
+                id="nombre"
+                label="Nombre"
                 autoFocus
               />
             </Grid>
@@ -62,10 +62,10 @@ export default function SignUp() {
                 variant="outlined"
                 required
                 fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
+                id="apellido"
+                label="Apellido"
+                name="apellido"
+                autoComplete="apellido"
               />
             </Grid>
             <Grid item xs={12}>
@@ -73,10 +73,10 @@ export default function SignUp() {
                 variant="outlined"
                 required
                 fullWidth
-                id="studentId"
-                label="Student Id"
-                name="studentId"
-                autoComplete="sid"
+                id="registroAcademico"
+                label="Registro Académico"
+                name="registroAcademico"
+                autoComplete="registroAca"
               />
             </Grid>
             <Grid item xs={12}>
@@ -84,10 +84,11 @@ export default function SignUp() {
                 variant="outlined"
                 required
                 fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
+                id="correoElectronico"
+                label="Correo Electrónico"
+                name="correoElectronico"
+                autoComplete="correoElectronico"
+                type="email"
               />
             </Grid>
             <Grid item xs={12}>
@@ -95,11 +96,11 @@ export default function SignUp() {
                 variant="outlined"
                 required
                 fullWidth
-                name="password"
-                label="Password"
+                name="contraseña"
+                label="Contraseña"
                 type="password"
-                id="password"
-                autoComplete="current-password"
+                id="contraseña"
+                autoComplete="contraseña-actual"
               />
             </Grid>
           </Grid>
@@ -110,12 +111,12 @@ export default function SignUp() {
             color="primary"
             className={classes.submit}
           >
-            Sign Up
+            Registrarte
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
               <Link href="./" variant="body2">
-                Already have an account? Sign In
+                ¿Ya tienes una cuenta? Inicia Sesión
               </Link>
             </Grid>
           </Grid>

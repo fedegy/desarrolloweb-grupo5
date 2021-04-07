@@ -43,7 +43,7 @@ export default function SignIn() {
           <LockIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign In
+          Inicio de Sesión
         </Typography>
         <form className={classes.form} noValidate>
           <TextField
@@ -51,10 +51,10 @@ export default function SignIn() {
             margin="normal"
             required
             fullWidth
-            id="studentId"
-            label="Student Id"
-            name="studentId"
-            autoComplete="sid"
+            id="registroAcademico"
+            label="Registro Académico"
+            name="registroAcademico"
+            autoComplete="registroAca"
             autoFocus
           />
           <TextField
@@ -62,15 +62,15 @@ export default function SignIn() {
             margin="normal"
             required
             fullWidth
-            name="password"
-            label="Password"
+            name="contraseña"
+            label="Contraseña"
             type="password"
-            id="password"
-            autoComplete="current-password"
+            id="contraseña"
+            autoComplete="contraseña-actual"
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
+            label="Recordar mi usuario"
           />
           <Button
             type="submit"
@@ -79,17 +79,17 @@ export default function SignIn() {
             color="primary"
             className={classes.submit}
           >
-            Sign In
+            Ingresar
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link href="./reset" variant="body2">
-                Forgot password?
+              <Link href="./reiniciar-contraseña" variant="body2">
+                ¿Olvidó su contraseña?
               </Link>
             </Grid>
             <Grid item>
-              <Link href="./signup" variant="body2">
-                {"Don't have an account? Sign Up"}
+              <Link href="./registro" variant="body2">
+                {"¿No tienes una cuenta? Crea una"}
               </Link>
             </Grid>
           </Grid>

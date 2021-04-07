@@ -41,7 +41,7 @@ export default function ResetPassword() {
           <VpnKeyIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Reset Password
+          Reiniciar Contraseña
         </Typography>
         <form className={classes.form} noValidate>
           <TextField
@@ -49,10 +49,10 @@ export default function ResetPassword() {
             margin="normal"
             required
             fullWidth
-            id="studentId"
-            label="Student Id"
-            name="studentId"
-            autoComplete="sid"
+            id="registroAcademico"
+            label="Registro Académico"
+            name="registroAcademico"
+            autoComplete="registroAca"
             autoFocus
           />
           <TextField
@@ -60,11 +60,11 @@ export default function ResetPassword() {
             margin="normal"
             required
             fullWidth
-            name="email"
-            label="Email Address"
-            type="password"
-            id="email"
-            autoComplete="email"
+            id="correoElectronico"
+            label="Correo Electrónico"
+            name="correoElectronico"
+            autoComplete="correoElectronico"
+            type="email"
           />
           <Button
             type="submit"
@@ -73,12 +73,12 @@ export default function ResetPassword() {
             color="primary"
             className={classes.submit}
           >
-            Reset
+            Reiniciar
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
               <Link href="./" variant="body2">
-                Return to Sign In
+                Inicio de Sesión
               </Link>
             </Grid>
           </Grid>

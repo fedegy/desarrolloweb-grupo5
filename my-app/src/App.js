@@ -8,12 +8,12 @@ function App() {
     <Router>
       <div className="container">
         <Switch>
-          <Route exact path="/signup">
+          <Route exact path="/registro">
             <SignUp />
           </Route>
         </Switch>
         <Switch>
-          <Route exact path="/reset">
+          <Route exact path="/reiniciar-contraseña">
             <Password />
           </Route>
         </Switch>
