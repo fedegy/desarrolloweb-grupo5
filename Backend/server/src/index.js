@@ -129,7 +129,6 @@ app.post('/crear_publicacion',(req,res)=>{
 });
 
 
-
 //Ver publicacion
 app.get('/ver_publicacion',(req,res)=>{
     //Se descarta ID y fecha porque se ingresan automaticamente
