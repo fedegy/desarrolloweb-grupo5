@@ -1,6 +1,6 @@
-import SignIn from "./SignIn";
-import SignUp from "./SignUp";
-import Password from "./Password";
+import SignIn from "../pages/SignIn";
+import SignUp from "../pages/SignUp";
+import Password from "../pages/Password";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
@@ -25,6 +25,6 @@ function App() {
       </div>
     </Router>
   );
-}
+} 
 
 export default App;
