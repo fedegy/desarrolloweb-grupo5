@@ -1,6 +1,7 @@
 import React from 'react'
 import circlesImg from '../images/circles.png'
 import './styles/Card.css'
+import {Link} from 'react-router-dom'
 
 //const Card = ({ title, description, leftColor, rightColor }) => (
 const Card = ({ title, description, Registro, Sujeto,Fecha }) => (
@@ -21,12 +22,16 @@ const Card = ({ title, description, Registro, Sujeto,Fecha }) => (
                     <h3 className="Sujeto">{Sujeto}</h3>
                     <h3>{description}</h3>
                     <p>{Fecha}</p>
-                   
+                    <Link to="/exercise/new">
+                    <button class="redondo"> ⬇⬇⬇ </button>
+                    </Link>
                 </div>
             </div>
         </div>
     </div>
+    <br/>
     </center>
+    
 )
 
 export default Card

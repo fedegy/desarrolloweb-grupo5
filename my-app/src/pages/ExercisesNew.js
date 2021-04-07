@@ -33,6 +33,7 @@ class ExercisesNew extends React.Component{
                     <ExercisesForm
                     onChange={this.hadleChange}
                     form={this.state.form}
+                    value={this.state.value}
                     />
 
                 </div>

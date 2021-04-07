@@ -3,16 +3,18 @@ import './styles/Form.css'
 
 class ExercisesForm extends React.Component{
    
-
+    state = {
+        value:''
+    };
 
     hadleSubmit = e => {
         e.preventDefault()
         console.log(this.state)
     }
    
-   
-
+  
     render(){
+        const {value} = this.state
         var dat= new Date(); //Obtienes la fecha
         const{onChange,form}= this.props
         return (
@@ -22,19 +24,36 @@ class ExercisesForm extends React.Component{
                 <form 
                     onSubmit={this.hadleSubmit}
                 >
-                       <div className="form-group">
-                        <input 
-                        type="email"
-                        className="data"
-                        placeholder="Tipo"
-                        name="title"
-                        onChange={onChange}
-                        value={form.title}
-                    />
- 
-                    </div>  
                     <br/>
-                   
+                    <div className="form-group">
+                    <label>
+                        Profesor
+                         <input 
+                      type="radio"
+                      value="Profesor"
+                      name="title"
+                      checked={value === "Profesor"}
+                      onChange={onChange}
+                     
+                       
+                    />
+
+
+                    </label> <br/>
+                    <label>
+                        Curso
+                    <input 
+                        type="radio"
+                        name="title"
+                        value="Curso"
+                        checked={value === "Curso"}
+                        onChange={onChange}
+                       
+                    />
+
+                    </label>
+                      </div>
+                       <br/>
                      <div className="form-group">
                         <input 
                         type="text"
