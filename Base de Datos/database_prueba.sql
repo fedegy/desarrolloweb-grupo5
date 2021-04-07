@@ -80,5 +80,5 @@ INSERT INTO cursos (id_curso,nombre_curso,profesor,creditos) VALUES (724,'Teoria
 
 
 SELECT*FROM cursos;
-DROP TABLE cursos;
+
 
