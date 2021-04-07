@@ -1,4 +1,4 @@
-import SignUp from "../pages/SignUp";
+import NewUsuario from "../PagesLogics/NewUserLogic";
 import Password from "../PagesLogics/PasswordLogic";
 import Registro from '../PagesLogics/LoginLogic'
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -21,7 +21,7 @@ function App() {
         </Switch>
         <Switch>
           <Route exact path="/Nuevo-Usuario">
-            <SignUp />
+            <NewUsuario />
           </Route>
         </Switch>
       </div> 

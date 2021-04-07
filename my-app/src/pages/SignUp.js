@@ -10,6 +10,37 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 
+global.Newcarnet_get='';
+global.Newnombre_get='';
+global.Newapellidos_get='';
+global.Newconstrasena_get='';
+global.Newcorreo_get='';
+
+
+const NewValueCarnet = (event) =>{
+  event.preventDefault();
+  global.Newcarnet_get= event.target.value
+ }
+ const NewValueNombre = (event) =>{
+  event.preventDefault();
+  global.Newnombre_get= event.target.value
+ }
+ const NewValueApellidos= (event) =>{
+  event.preventDefault();
+  global.Newapellidos_get= event.target.value
+ }
+ const NewValuePassword = (event) =>{
+  event.preventDefault();
+  global.Newconstrasena_get= event.target.value
+ }
+ const NewValueEmail = (event) =>{
+  event.preventDefault();
+  global.Newcorreo_get= event.target.value
+ }
+ 
+
+
+
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -30,7 +61,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));  
 
-export default function SignUp() {
+
+const SignUp = ({onClick}) => {
   const classes = useStyles();
 
   return (
@@ -57,6 +89,7 @@ export default function SignUp() {
                 id="nombre"
                 label="Nombre"
                 autoFocus
+                onChange = {NewValueNombre} 
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -68,6 +101,7 @@ export default function SignUp() {
                 label="Apellido"
                 name="apellido"
                 autoComplete="apellido"
+                onChange = {NewValueApellidos} 
               />
             </Grid>
             <Grid item xs={12}>
@@ -79,6 +113,7 @@ export default function SignUp() {
                 label="Registro Académico"
                 name="registroAcademico"
                 autoComplete="registroAca"
+                onChange = {NewValueCarnet} 
               />
             </Grid>
             <Grid item xs={12}>
@@ -91,6 +126,7 @@ export default function SignUp() {
                 name="correoElectronico"
                 autoComplete="correoElectronico"
                 type="email"
+                onChange = {NewValueEmail} 
               />
             </Grid>
             <Grid item xs={12}>
@@ -99,13 +135,11 @@ export default function SignUp() {
                 required
                 fullWidth
                 name="contraseña"
-
-
                 label="contraseña"
-
                 type="password"
                 id="contraseña"
                 autoComplete="contraseña-actual"
+                onChange = {NewValuePassword} 
               />
             </Grid>
           </Grid>
@@ -115,6 +149,7 @@ export default function SignUp() {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick= {onClick}
           >
             Registrarte
           </Button>
@@ -130,3 +165,4 @@ export default function SignUp() {
     </Container>
   );
 }
+export default SignUp

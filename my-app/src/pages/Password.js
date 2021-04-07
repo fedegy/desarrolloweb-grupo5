@@ -14,6 +14,8 @@ global.emailContrasena='';
 global.CarnetContrasena='';
 
 
+
+
 const getValueUser = (event) =>{
   event.preventDefault();
   global.CarnetContrasena = event.target.value
@@ -24,8 +26,6 @@ const getValueUser = (event) =>{
   global.emailContrasena= event.target.value
 
  }
-
-
 
 const useStyles = makeStyles((theme) => ({
   paper: {

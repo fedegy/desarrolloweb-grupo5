@@ -1,10 +1,8 @@
 import React from 'react'
 import SignIn from '../pages/SignIn'
 
-global.email='';
-global.password='';
 
-class Login extends React.Component{
+class LoginLogic extends React.Component{
     
 
     state = {
@@ -46,4 +44,4 @@ class Login extends React.Component{
     }
 }
 
-export default Login
+export default LoginLogic
