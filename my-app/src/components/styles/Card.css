@@ -2,15 +2,32 @@
     margin-top: 20px;
     border: none;
     border-radius: 8px;
+    background-size: cover;
     /* background: url('../../images/circles.png') no-repeat, linear-gradient(to right, #A74CF2, #617BFB); */
 }
 .Fitness-Card {
-    max-height: 140px;
-    max-width: 520px;
+    max-height: 240px;
+    max-width: 920px;
 }
 .Fitness-Card-Info {
-    padding-left: 0;
-    padding-right: 75px;
+    padding-left: 20PX;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    padding-top: 5px;
+}
+
+.Registro{
+    text-align: right;
+}
+
+.Sujeto{
+    text-align: left;
+    text-decoration:underline;
+}
+
+.Titulo 
+{
+    text-align: left;
 }
 .Fitness-Card-Info h1{
     font-size: 23px;
