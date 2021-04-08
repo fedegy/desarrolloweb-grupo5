@@ -6,6 +6,8 @@ import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Title from "./Title";
+import { Button } from "@material-ui/core";
+import Grid from "@material-ui/core/Grid";
 
 // Pagina de publicaciones
 function createData(id, fecha, curso, catedratico, usuario, consulta) {
@@ -73,6 +75,21 @@ function CursosMain(id, fecha, curso, creditos) {
 const rowsCursosMain = [
   CursosMain(0, "16 Mar, 2019", "Analisis y Diseño de Sistemas 1", 28),
   CursosMain(1, "16 Mar, 2019", "Analisis y Diseño de Sistemas 2", 13),
+];
+
+function Perfil(id, registro, nombre, apellido, correo, contrasena) {
+  return { id, registro, nombre, apellido, correo, contrasena };
+}
+
+const datosPerfil = [
+  Perfil(
+    0,
+    "20202121",
+    "Kylian",
+    "Goretzka",
+    "registro@hotmail.com",
+    "miPat1t0F30"
+  ),
 ];
 
 function preventDefault(event) {
@@ -147,7 +164,7 @@ export function CursosAprobadosMain() {
   const classes = useStyles();
   return (
     <React.Fragment>
-      <Title>Mi Perfil</Title>
+      <Title>Cursos Aprobados</Title>
       <Table size="small">
         <TableHead>
           <TableRow>
@@ -166,6 +183,51 @@ export function CursosAprobadosMain() {
           ))}
         </TableBody>
       </Table>
+    </React.Fragment>
+  );
+}
+
+export function PerfilTable() {
+  const classes = useStyles();
+  return (
+    <React.Fragment>
+      <Title>Mi Perfil</Title>
+      <Table size="small">
+        <TableHead>
+          <TableRow>
+            <TableCell>Registro Académico</TableCell>
+            <TableCell>Nombre</TableCell>
+            <TableCell>Apellido</TableCell>
+            <TableCell>Correo Electrónico</TableCell>
+            <TableCell>Contraseña</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {datosPerfil.map((datosPerfil) => (
+            <TableRow key={datosPerfil.id}>
+              <TableCell>{datosPerfil.registro}</TableCell>
+              <TableCell>{datosPerfil.nombre}</TableCell>
+              <TableCell>{datosPerfil.apellido}</TableCell>
+              <TableCell>{datosPerfil.correo}</TableCell>
+              <TableCell>{datosPerfil.contrasena}</TableCell>
+              <Button type="submit">Editar</Button>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+      <Button
+        type="submit"
+        style={{
+          height: "30px",
+          width: "100px",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+        variant="contained"
+        color="primary"
+      >
+        Guardar
+      </Button>
     </React.Fragment>
   );
 }

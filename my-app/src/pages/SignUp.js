@@ -10,42 +10,38 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 
-global.Newcarnet_get='';
-global.Newnombre_get='';
-global.Newapellidos_get='';
-global.Newconstrasena_get='';
-global.Newcorreo_get='';
+global.Newcarnet_get = "";
+global.Newnombre_get = "";
+global.Newapellidos_get = "";
+global.Newconstrasena_get = "";
+global.Newcorreo_get = "";
 
-
-const NewValueCarnet = (event) =>{
+const NewValueCarnet = (event) => {
   event.preventDefault();
-  global.Newcarnet_get= event.target.value
- }
- const NewValueNombre = (event) =>{
+  global.Newcarnet_get = event.target.value;
+};
+const NewValueNombre = (event) => {
   event.preventDefault();
-  global.Newnombre_get= event.target.value
- }
- const NewValueApellidos= (event) =>{
+  global.Newnombre_get = event.target.value;
+};
+const NewValueApellidos = (event) => {
   event.preventDefault();
-  global.Newapellidos_get= event.target.value
- }
- const NewValuePassword = (event) =>{
+  global.Newapellidos_get = event.target.value;
+};
+const NewValuePassword = (event) => {
   event.preventDefault();
-  global.Newconstrasena_get= event.target.value
- }
- const NewValueEmail = (event) =>{
+  global.Newconstrasena_get = event.target.value;
+};
+const NewValueEmail = (event) => {
   event.preventDefault();
-  global.Newcorreo_get= event.target.value
- }
- 
-
-
+  global.Newcorreo_get = event.target.value;
+};
 
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
     display: "flex",
-    flexDirection: "column", 
+    flexDirection: "column",
     alignItems: "center",
   },
   avatar: {
@@ -59,10 +55,9 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
-}));  
+}));
 
-
-const SignUp = ({onClick}) => {
+const SignUp = ({ onClick }) => {
   const classes = useStyles();
 
   return (
@@ -73,9 +68,7 @@ const SignUp = ({onClick}) => {
           <AccountBoxIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-
-        Registrarte
-
+          Registrarte
         </Typography>
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>
@@ -89,7 +82,7 @@ const SignUp = ({onClick}) => {
                 id="nombre"
                 label="Nombre"
                 autoFocus
-                onChange = {NewValueNombre} 
+                onChange={NewValueNombre}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -101,7 +94,7 @@ const SignUp = ({onClick}) => {
                 label="Apellido"
                 name="apellido"
                 autoComplete="apellido"
-                onChange = {NewValueApellidos} 
+                onChange={NewValueApellidos}
               />
             </Grid>
             <Grid item xs={12}>
@@ -113,7 +106,7 @@ const SignUp = ({onClick}) => {
                 label="Registro Académico"
                 name="registroAcademico"
                 autoComplete="registroAca"
-                onChange = {NewValueCarnet} 
+                onChange={NewValueCarnet}
               />
             </Grid>
             <Grid item xs={12}>
@@ -126,7 +119,7 @@ const SignUp = ({onClick}) => {
                 name="correoElectronico"
                 autoComplete="correoElectronico"
                 type="email"
-                onChange = {NewValueEmail} 
+                onChange={NewValueEmail}
               />
             </Grid>
             <Grid item xs={12}>
@@ -135,11 +128,11 @@ const SignUp = ({onClick}) => {
                 required
                 fullWidth
                 name="contraseña"
-                label="contraseña"
+                label="Contraseña"
                 type="password"
                 id="contraseña"
                 autoComplete="contraseña-actual"
-                onChange = {NewValuePassword} 
+                onChange={NewValuePassword}
               />
             </Grid>
           </Grid>
@@ -149,7 +142,7 @@ const SignUp = ({onClick}) => {
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick= {onClick}
+            onClick={onClick}
           >
             Registrarte
           </Button>
@@ -164,5 +157,5 @@ const SignUp = ({onClick}) => {
       </div>
     </Container>
   );
-}
-export default SignUp
+};
+export default SignUp;
