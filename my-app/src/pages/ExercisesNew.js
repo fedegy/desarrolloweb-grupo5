@@ -31,7 +31,7 @@ class ExercisesNew extends React.Component{
     }
     
     handleSubmit = async e => {
-        e.preventDefault()
+     
       
 
         this.state.envio.tipo_publicacion_get = this.state.form.title;

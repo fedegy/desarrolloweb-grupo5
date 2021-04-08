@@ -1,5 +1,6 @@
 import React from 'react'
 import './styles/Form.css'
+import {Link} from 'react-router-dom'
 
 class ExercisesForm extends React.Component{
    
@@ -7,11 +8,6 @@ class ExercisesForm extends React.Component{
         value:''
     };
 
-
-
- 
-   
-    
     render(){
         const {value} = this.state
         var dat= new Date(); //Obtienes la fecha
@@ -105,6 +101,12 @@ class ExercisesForm extends React.Component{
 
                          Submit
                      </button>
+                     <Link to="/Post">
+                     <button>
+                         Regresar
+                     </button>
+                     </Link>
+                     
                 </form>   
            </div></center>
         )

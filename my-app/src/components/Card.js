@@ -22,8 +22,8 @@ const Card = ({ title, description, Registro, Sujeto,Fecha }) => (
                     <h3 className="Sujeto">{Sujeto}</h3>
                     <h3>{description}</h3>
                     <p>{Fecha}</p>
-                    <Link to="/exercise/new"></Link>
-                    <button class="redondo"> ⬇⬇⬇ </button>
+                    <Link to="/exercise/new">
+                    <button class="redondo"> ⬇⬇⬇ </button></Link>
 
                 </div>
             </div>

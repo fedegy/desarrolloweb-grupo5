@@ -6,13 +6,18 @@ import Post from "../pages/Exercises";
 import New from "../pages/ExercisesNew";
 import tablas from "../pages/Comentarios";
 import Dashboard from "../pages/Dashboard";
+//<<<<<<< HEAD
 import Usuarios from "../pages/Usuarios";
 import Perfil from "../pages/Perfil";
+//=======
+import DROPS from "../components/DropProfesores";
+//>>>>>>> 440b861533af6c884fce0e3d4456edbe58160998
 
 const App = () => {
   return (
     <BrowserRouter>
       <Switch>
+        <Route exact path="/drops" component={DROPS} />
         <Route exact path="/Comentarios" component={tablas} />
         <Route exact path="/Post" component={Post} />
         <Route exact path="/exercise/new" component={New} />

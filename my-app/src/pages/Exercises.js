@@ -74,12 +74,12 @@ class Exercises extends React.Component{
                     <button>Filtrar</button>
                       </div>
 
-
+                      <AddButton/>
             <ExerciseList 
             exercises={this.state.data}
             />
 
-            <AddButton/>
+          
         </div>
         )
     }
