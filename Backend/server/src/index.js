@@ -166,7 +166,24 @@ app.get('/lista_cursosdtt',(req,res)=>{
 
 
 
+//Get columnas de curso
+app.get('/select_cursos',(req,res)=>{
+    const selector_cursosSQL='SELECT nombre_curso FROM cursos;'
+    base_datos.query(selector_cursosSQL,(err,result)=>{
+        console.log(result)
+        res.send(result)
+    })
+});
 
+
+//Get columnas de profesor
+app.get('/select_profesor',(req,res)=>{
+    const selector_profesorSQL='SELECT profesor FROM cursos;'
+    base_datos.query(selector_profesorSQL,(err,result)=>{
+        console.log(result)
+        res.send(result)
+    })
+});
 
 //Puerto en donde sera ejecutado
 app.listen(3001,()=>{

@@ -118,8 +118,8 @@ INSERT INTO cursos (id_curso,nombre_curso,profesor,creditos) VALUES (786,'Sistem
 INSERT INTO cursos (id_curso,nombre_curso,profesor,creditos) VALUES (722,'Teoria de Sistemas 1','Jorge Luis Alvarez Mejia',5);
 INSERT INTO cursos (id_curso,nombre_curso,profesor,creditos) VALUES (724,'Teoria de Sistemas 2','Jorge Luis Alvarez Mejia',5);
 
-
-
+SELECT nombre_curso FROM cursos;
+SELECT profesor FROM cursos;
 SELECT*FROM cursos;
 
 
