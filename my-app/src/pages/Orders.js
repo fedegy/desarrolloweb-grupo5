@@ -7,7 +7,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Title from "./Title";
 
-// Datos para las publicaciones
+// Pagina de publicaciones
 function createData(id, fecha, curso, catedratico, usuario, consulta) {
   return { id, fecha, curso, catedratico, usuario, consulta };
 }
@@ -55,6 +55,26 @@ const rows = [
   ),
 ];
 
+//Pagina de Usuarios
+function createDataCursos(id, fecha, usuario, creditos) {
+  return { id, fecha, usuario, creditos };
+}
+
+const rowsCursos = [
+  createDataCursos(0, "16 Mar, 2019", "Jorge Lopez", 28),
+  createDataCursos(1, "16 Mar, 2019", "Natasha Romanoff", 78),
+];
+
+//Pagina de Perfil
+function CursosMain(id, fecha, curso, creditos) {
+  return { id, fecha, curso, creditos };
+}
+
+const rowsCursosMain = [
+  CursosMain(0, "16 Mar, 2019", "Analisis y Diseño de Sistemas 1", 28),
+  CursosMain(1, "16 Mar, 2019", "Analisis y Diseño de Sistemas 2", 13),
+];
+
 function preventDefault(event) {
   event.preventDefault();
 }
@@ -88,6 +108,60 @@ export default function Orders() {
               <TableCell>{row.catedratico}</TableCell>
               <TableCell>{row.usuario}</TableCell>
               <TableCell>{row.consulta}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </React.Fragment>
+  );
+}
+
+export function Cursos() {
+  const classes = useStyles();
+  return (
+    <React.Fragment>
+      <Title>Cursos Aprobados</Title>
+      <Table size="small">
+        <TableHead>
+          <TableRow>
+            <TableCell>Fecha</TableCell>
+            <TableCell>Usuario</TableCell>
+            <TableCell>Créditos</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {rowsCursos.map((rowsCursos) => (
+            <TableRow key={rowsCursos.id}>
+              <TableCell>{rowsCursos.fecha}</TableCell>
+              <TableCell>{rowsCursos.usuario}</TableCell>
+              <TableCell>{rowsCursos.creditos}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </React.Fragment>
+  );
+}
+
+export function CursosAprobadosMain() {
+  const classes = useStyles();
+  return (
+    <React.Fragment>
+      <Title>Mi Perfil</Title>
+      <Table size="small">
+        <TableHead>
+          <TableRow>
+            <TableCell>Fecha</TableCell>
+            <TableCell>Curso</TableCell>
+            <TableCell>Créditos</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {rowsCursosMain.map((rowsCursosMain) => (
+            <TableRow key={rowsCursosMain.id}>
+              <TableCell>{rowsCursosMain.fecha}</TableCell>
+              <TableCell>{rowsCursosMain.curso}</TableCell>
+              <TableCell>{rowsCursosMain.creditos}</TableCell>
             </TableRow>
           ))}
         </TableBody>

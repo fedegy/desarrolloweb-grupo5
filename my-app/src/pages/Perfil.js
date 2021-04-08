@@ -16,8 +16,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import { mainListItems } from "./listItems";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import Chart from "./Chart";
-import Orders from "./Orders";
+import { CursosAprobadosMain } from "./Orders";
 
 const drawerWidth = 240;
 
@@ -138,7 +137,7 @@ export default function Dashboard() {
             noWrap
             className={classes.title}
           >
-            Dashboard
+            Mi Perfil
           </Typography>
           <IconButton color="inherit">
             <ExitToAppIcon />
@@ -166,14 +165,9 @@ export default function Dashboard() {
 
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
-            <Grid item xs={12} md={8} lg={9}>
-              <Paper className={fixedHeightPaper}>
-                <Chart />
-              </Paper>
-            </Grid>
             <Grid item xs={12}>
               <Paper className={classes.paper}>
-                <Orders />
+                <CursosAprobadosMain />
               </Paper>
             </Grid>
           </Grid>
