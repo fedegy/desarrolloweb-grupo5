@@ -69,6 +69,7 @@ app.post('/login',(req,res)=>{
             res.send("Se autentico con exito");
             console.log(result);
             console.log("Se autentico con exito");
+           
         }else{
             res.send("Error, usuario o contraseña incorrecto");
             console.log("Error, usuario o contraseña incorrecto");

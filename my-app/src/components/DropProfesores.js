@@ -1,10 +1,6 @@
 import axios from 'axios';
 import React, {Component} from 'react'
 
-
-
-
-
 class DropProfesores extends Component {
    state={
     profesor:[]
@@ -18,7 +14,6 @@ class DropProfesores extends Component {
             this.setState({profesor: response.data})
             })
             .catch((error) => {
-
                 console.log(error);
             });
     }
