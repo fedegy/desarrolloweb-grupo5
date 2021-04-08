@@ -140,6 +140,16 @@ app.get('/ver_publicacion',(req,res)=>{
     })
 });
 
+//Suma de creditos
+app.post('/suma_cursosaprobados',(req,res)=>{
+    const carnet_cursos_aprobados=req.body.carnet_cursosaprobados_get;
+    //Se selecciona carnet si lo solicitado es igual
+    const suma_cursosSQL='SELECT creditos FROM cursos_aprobados WHERE carnet=?'
+    base_datos.query(suma_cursosSQL,[carnet_cursos_aprobados],(err,result)=>{
+        console.log(result)
+        res.send(result)
+    })
+});
 
 
 //Puerto en donde sera ejecutado
