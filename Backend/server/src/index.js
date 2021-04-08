@@ -152,6 +152,22 @@ app.post('/suma_cursosaprobados',(req,res)=>{
 });
 
 
+
+
+app.get('/lista_cursosdtt',(req,res)=>{
+    const cursos_completosSQL='SELECT*FROM cursos'
+    base_datos.query(cursos_completosSQL,(err,result)=>{
+        console.log(result)
+        res.send(result)
+    })
+});
+
+
+
+
+
+
+
 //Puerto en donde sera ejecutado
 app.listen(3001,()=>{
     console.log('Servidor corriendo')
