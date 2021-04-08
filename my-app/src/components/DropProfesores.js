@@ -1,17 +1,21 @@
 import axios from 'axios';
 import React, {Component} from 'react'
 
-class DropCursos extends Component {
+
+
+
+
+class DropProfesores extends Component {
    state={
-    nombre_curso:[]
+    profesor:[]
    }
    
     componentDidMount(){
         axios
-            .get("http://localhost:3001/lista_cursosdtt")
+            .get("http://localhost:3001/select_profesor")
             .then((response)=>{
             console.log(response)
-            this.setState({nombre_curso: response.data})
+            this.setState({profesor: response.data})
             })
             .catch((error) => {
 
@@ -24,8 +28,8 @@ class DropCursos extends Component {
             <div className="App">
                <div className="form-group">
                     <select name="ciudades" className="forme-control">
-                        {this.state.nombre_curso.map(elemento=>(
-                            <option key={elemento.id} value={elemento.id}>{elemento.nombre_curso}</option>
+                        {this.state.profesor.map(elemento=>(
+                            <option key={elemento.id} value={elemento.id}>{elemento.profesor}</option>
                         ))}
                     </select>   
                 </div> 
@@ -34,4 +38,4 @@ class DropCursos extends Component {
     }
 }
 
-export default DropCursos;
+export default DropProfesores;

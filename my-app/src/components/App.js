@@ -6,11 +6,13 @@ import Post from "../pages/Exercises";
 import New from "../pages/ExercisesNew";
 import tablas from "../pages/Comentarios";
 import Dashboard from "../pages/Dashboard";
+import DROPS from '../components/DropProfesores'
 
 const App = () => {
   return (
     <BrowserRouter>
       <Switch>
+      <Route exact path="/drops" component={DROPS} />
         <Route exact path="/Comentarios" component={tablas} />
         <Route exact path="/Post" component={Post} />
         <Route exact path="/exercise/new" component={New} />
