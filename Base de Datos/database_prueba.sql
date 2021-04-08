@@ -40,6 +40,18 @@ CREATE TABLE publicacion(
 
 SELECT*FROM publicacion;
 
+/*NUEVA TABLA DE COMENTARIOS*/
+
+CREATE TABLE comentario(
+    id_comentario INT NOT NULL AUTO_INCREMENT,
+    Registro INT NOT NULL,
+    Descripcion VARCHAR(600) NOT NULL,
+
+    PRIMARY KEY(id)
+    
+);
+
+SELECT*FROM comentario;
 
 CREATE TABLE cursos_aprobados_dtt(
 	id_curso INT NOT NULL,
