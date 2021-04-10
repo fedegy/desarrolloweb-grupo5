@@ -180,7 +180,27 @@ app.get('/lista_cursosdtt',(req,res)=>{
     })
 });
 
+//Mandar datos a comentatios
+app.post('/crear_comentario',(req,res)=>{
+    const id_publicacion=req.body.id_publicacion_get;
+    const carnet_comentario=req.body.carnet_comentario_get;
+    const descripcion_comentario=req.body.descripcion_comentario_get;
+    //Se selecciona carnet si lo solicitado es igual
+    const comentarios_SQL='INSERT INTO comentariosTemp (id_publicacion,Registro,Descripcion) VALUES (?,?,?);'
+    base_datos.query(comentarios_SQL,[id_publicacion,carnet_comentario,descripcion_comentario],(err,result)=>{
+        console.log(result)
+        res.send(result)
+    })
+});
 
+
+app.get('/mostrar_comentarios',(req,res)=>{
+    const comentarios_MosSQL='SELECT*FROM comentariosTemp'
+    base_datos.query(comentarios_MosSQL,(err,result)=>{
+        console.log(result)
+        res.send(result)
+    })
+});
 
 
 //Get columnas de curso
