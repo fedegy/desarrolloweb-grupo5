@@ -8,7 +8,7 @@ const ExerciseList = (datos) => {
     return(
         <div>
             <TableContainer>
-                <Table>
+                <Table> 
                     <TableHead>
                         <TableRow>
                             <TableCell>Usuario</TableCell>

@@ -16,7 +16,8 @@ import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import { mainListItems } from "./listItems";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import { CursosAprobadosMain } from "./Orders";
+import { CursosAprobadosMain, PerfilTable } from "./Orders";
+import DropPerfil from "../components/DropPerfil";
 
 const drawerWidth = 240;
 
@@ -164,7 +165,17 @@ export default function Dashboard() {
         <div className={classes.appBarSpacer} />
 
         <Container maxWidth="lg" className={classes.container}>
-          <Grid container spacing={3}>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <Paper className={fixedHeightPaper}>
+                <PerfilTable />
+              </Paper>
+            </Grid>
+            <Grid item xs={12}>
+              <Paper className={fixedHeightPaper}>
+                <DropPerfil />
+              </Paper>
+            </Grid>
             <Grid item xs={12}>
               <Paper className={classes.paper}>
                 <CursosAprobadosMain />

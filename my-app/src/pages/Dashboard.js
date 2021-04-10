@@ -16,8 +16,8 @@ import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import { mainListItems } from "./listItems";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import Chart from "./Chart";
 import Orders from "./Orders";
+import DropProfesores from "../components/DropProfesores";
 
 const drawerWidth = 240;
 
@@ -166,9 +166,9 @@ export default function Dashboard() {
 
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
-            <Grid item xs={12} md={8} lg={9}>
+            <Grid item xs={12} md={8} lg={9} md={8} lg={9}>
               <Paper className={fixedHeightPaper}>
-                <Chart />
+                <DropProfesores />
               </Paper>
             </Grid>
             <Grid item xs={12}>
