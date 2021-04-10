@@ -224,6 +224,16 @@ app.get('/select_profesor',(req,res)=>{
 });
 
 
+//Eliminar comentario
+app.post('/eliminar_comentario',(req,res)=>{
+    const id_publicacion_temporal=req.body.id_publicaciontemporal_get;
+    const del_comentarioSQL='DELETE FROM comentariosTemp WHERE id_publicacion=?'
+    base_datos.query(del_comentarioSQL,[id_publicacion_temporal],(err,result)=>{
+        console.log(result)
+        res.send(result)
+    })
+
+});
 
 //Puerto en donde sera ejecutado
 app.listen(3001,()=>{
