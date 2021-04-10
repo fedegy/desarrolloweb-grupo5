@@ -1,5 +1,7 @@
 import React from 'react'
 import SignIn from '../pages/SignIn'
+import axios from 'axios';
+
 
 
 class LoginLogic extends React.Component{
@@ -9,47 +11,45 @@ class LoginLogic extends React.Component{
         carnet_login_get: '',
         constrasena_login_get: ''
     }
-    
-       hadleChange = async e => {
+
+  
+     login = (e) =>{
+ 
         e.preventDefault()
-
-
-       try{
-        this.state.carnet_login_get = global.email;
-        this.state.constrasena_login_get = global.password;
-       
-
-        let result = await fetch('http://localhost:3001/login',{
-        method: 'post',
-        headers: {
-            'Accept':'application/json',
-            'Content-type': 'application/json',
-        },
-        body: JSON.stringify(this.state)
-        }); 
-        if(result.length>0){
-            //Se manda mensaje en consola
-           
-            
-            console.log("Redireccion");
-           
+        // eslint-disable-next-line react/no-direct-mutation-state
+        this.state = {
+            carnet_login_get:  global.email,
+            constrasena_login_get: global.password
         }
-
-        
        
-       
-       }catch (error){
-        console.log(error)
-       }
-
+        console.log('ejecutado', this.state.carnet_login_get,this.state.constrasena_login_get)
+        axios.post("http://localhost:3001/login",{
+            carnet_login_get:  this.state.carnet_login_get,
+            constrasena_login_get:  this.state.constrasena_login_get,
+        }).then((response)=>{
+            return response.data;
+        })
+        .then(response=>{
+            if(response.length>0){
+         
+                window.location.href="./Post";
+            }else{
+                alert('El usuario o la contraseña no son correctos');
+            }
+        })
+        .catch(error=>{
+            console.log(error);
+        })
 
     }
+    
 
     render(){ 
         return(
             <div >
+           
             <SignIn 
-            onClick= {this.hadleChange} />
+            onClick= {this.login} />
             </div>
         )
     }

@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./components/App";
 import Obtencion from './components/Obtencion'
 
+
 ReactDOM.render(
   <React.StrictMode>
     <App />

@@ -52,6 +52,20 @@ app.post('/registrar_alumno',(req,res)=>{
     })
 }); 
 
+
+//Mostrar Comentarios
+app.post('/Comentarios',(req,res)=>{
+    const publicacionid_comentarios=req.body.publicacionid_comentarios_get;
+    const selector_ComentariosSQL='SELECT*FROM comentarios WHERE id_publicacion=?'
+
+    base_datos.query(selector_ComentariosSQL,[publicacionid_comentarios],(err,result)=>{
+        console.log(result)
+        console.log('colsulta  exitosa')
+        res.send(result)
+    })
+});
+
+
 //Realizar el login del usuario registrado
 app.post('/login',(req,res)=>{
     const txt_login_usuario=req.body.carnet_login_get;
@@ -66,12 +80,13 @@ app.post('/login',(req,res)=>{
         //Se verifica la longitud de la respuesta si es mayor y si es correcta
         if(result.length>0){
             //Se manda mensaje en consola
-            res.send("Se autentico con exito");
-            console.log(result);
-            console.log("Se autentico con exito");
+            res.send(result);
+            console.log(result.length);
+            console.log("Se autentiasdasdco con exito");
            
         }else{
-            res.send("Error, usuario o contraseña incorrecto");
+            console.log(result.length);
+            res.send(result);
             console.log("Error, usuario o contraseña incorrecto");
         }
         //Finaliza respuesta
@@ -79,6 +94,8 @@ app.post('/login',(req,res)=>{
         })
     }
 });
+
+
 
 //Recuperación de contraseña olvidada
 app.post('/recuperar_password',(req,res)=>{
@@ -166,7 +183,6 @@ app.get('/lista_cursosdtt',(req,res)=>{
 
 
 
-
 //Get columnas de curso
 app.get('/select_cursos',(req,res)=>{
     const selector_cursosSQL='SELECT nombre_curso FROM cursos;'
@@ -177,6 +193,7 @@ app.get('/select_cursos',(req,res)=>{
 });
 
 
+
 //Get columnas de profesor
 app.get('/select_profesor',(req,res)=>{
     const selector_profesorSQL='SELECT profesor FROM cursos;'
@@ -185,6 +202,8 @@ app.get('/select_profesor',(req,res)=>{
         res.send(result)
     })
 });
+
+
 
 //Puerto en donde sera ejecutado
 app.listen(3001,()=>{

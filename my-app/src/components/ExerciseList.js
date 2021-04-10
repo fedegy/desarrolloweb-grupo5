@@ -1,10 +1,7 @@
 import React from 'react'
 import Card from './Card'
 
-const ExerciseList = ({exercises}) => (
-
-
-  
+const ExerciseList = ({exercises}) => (  
     <div>
         {exercises.map((exercese)=> (
                     <Card
@@ -14,6 +11,7 @@ const ExerciseList = ({exercises}) => (
                     Registro={exercese.Registro}
                     Sujeto={exercese.Sujeto} 
                     Fecha={exercese.Fecha} 
+                    id={exercese.id}
                     ></Card>
         ))}
     </div>

@@ -3,14 +3,21 @@ import React, {Component} from 'react'
 
 class DropProfesores extends Component {
    state={
+       cate:'Mario',
     profesor:[]
+
    }
+
    
+   if ( ) {
+
+    }
+
     componentDidMount(){
         axios
             .get("http://localhost:3001/select_profesor")
             .then((response)=>{
-            console.log(response)
+                console.log(response, 'siee')
             this.setState({profesor: response.data})
             })
             .catch((error) => {
@@ -28,6 +35,7 @@ class DropProfesores extends Component {
                         ))}
                     </select>   
                 </div> 
+
             </div></center>
         );
     }

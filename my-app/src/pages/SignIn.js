@@ -68,6 +68,7 @@ const SignIn = ({onClick}) => {
             name="registroAcademico"
             autoComplete="registroAca"
             autoFocus
+      
             onChange = {getValueUser} 
           />
           <TextField

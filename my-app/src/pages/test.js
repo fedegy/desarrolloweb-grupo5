@@ -18,7 +18,7 @@ import { mainListItems } from "./listItems";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import Chart from "./Chart";
 import Orders from "./Orders";
-
+import Post from "../pages/Exercises";
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -165,18 +165,9 @@ export default function Dashboard() {
         <div className={classes.appBarSpacer} />
 
         <Container maxWidth="lg" className={classes.container}>
-          <Grid container spacing={3}>
-            <Grid item xs={12} md={8} lg={9}>
-              <Paper className={fixedHeightPaper}>
-                <Chart />
-              </Paper>
-            </Grid>
-            <Grid item xs={12}>
-              <Paper className={classes.paper}>
-                <Orders />
-              </Paper>
-            </Grid>
-          </Grid>
+         
+           <Post/>
+      
         </Container>
       </main>
     </div>

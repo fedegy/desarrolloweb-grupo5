@@ -42,13 +42,11 @@ SELECT*FROM publicacion;
 
 /*NUEVA TABLA DE COMENTARIOS*/
 
-CREATE TABLE comentario(
-    id_comentario INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE comentarios(
+    id_publicacion INT NOT NULL,
     Registro INT NOT NULL,
     Descripcion VARCHAR(600) NOT NULL,
-
-    PRIMARY KEY(id)
-    
+    PRIMARY KEY(id_publicacion)
 );
 
 SELECT*FROM comentario;
@@ -123,3 +121,10 @@ SELECT profesor FROM cursos;
 SELECT*FROM cursos;
 
 
+//Comentaros Temporales
+CREATE TABLE comentariosTemp(
+    id_publicacion INT NOT NULL,
+    Registro INT NOT NULL,
+    Descripcion VARCHAR(600) NOT NULL,
+    PRIMARY KEY(id_publicacion)
+);

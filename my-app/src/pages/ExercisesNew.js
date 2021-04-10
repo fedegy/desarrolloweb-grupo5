@@ -32,8 +32,6 @@ class ExercisesNew extends React.Component{
     
     handleSubmit = async e => {
      
-      
-
         this.state.envio.tipo_publicacion_get = this.state.form.title;
         this.state.envio.mensaje_publicacion_get = this.state.form.description;
         this.state.envio.carnet_publicacion_get = this.state.form.Registro;

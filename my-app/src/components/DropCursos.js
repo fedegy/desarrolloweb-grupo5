@@ -10,7 +10,7 @@ class DropCursos extends Component {
         axios
             .get("http://localhost:3001/lista_cursosdtt")
             .then((response)=>{
-            console.log(response)
+          
             this.setState({nombre_curso: response.data})
             })
             .catch((error) => {

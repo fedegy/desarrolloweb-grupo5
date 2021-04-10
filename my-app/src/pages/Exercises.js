@@ -28,13 +28,10 @@ class Exercises extends React.Component{
         <div> 
                <div className="form-group">
                     <label>
-                        Profesor
                     <input 
                       type="radio"
                       value="Filtrar por Curso"
                       name="title"
-                  
-                     // onChange={onChange}
                     />
                     </label> 
                     
@@ -43,10 +40,8 @@ class Exercises extends React.Component{
                         className="data"
                         placeholder="Profesor"
                         name="Profesor"
-                      //  onChange={onChange}
                         value=""
                          />
-          
                     <br/>
 
                     <label>
@@ -55,8 +50,6 @@ class Exercises extends React.Component{
                         type="radio"
                         name="title"
                         value="Filtrar por Catedrático."
-                    
-                      //  onChange={onChange}
                     />
                     </label>
                     <input 
@@ -64,12 +57,8 @@ class Exercises extends React.Component{
                         className="data"
                         placeholder="Curso"
                         name="Curso"
-                      //  onChange={onChange}
                         value=""
                          />
-
-
-
                     <br/>
                     <button>Filtrar</button>
                       </div>
