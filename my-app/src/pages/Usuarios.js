@@ -20,7 +20,7 @@ import { Cursos } from "./Orders";
 import PU from '../components/PerfilUsaer'
 import CA from '../components/CAusuarios'
 import axios from 'axios';
-
+import Cookies from 'universal-cookie'
 
 const drawerWidth = 240;
 
@@ -109,18 +109,21 @@ const useStyles = makeStyles((theme) => ({
 const Registro={
   Registro:''
 }
+
+global.Registro=''
 export default function Dashboard() {
 
 
   const hanfleonChange = (event) => {
     event.preventDefault();
-     Registro.Registro = event.target.value;
-     console.log(Registro.Registro)
+    global.Registro = event.target.value;
+     console.log( global.Registro)
   };
 
   const handleClick = (event) => {
     event.preventDefault();
-     console.log(Registro.Registro)
+    const cookies = new Cookies();
+    cookies.set('idRegistroBusqueda',global.Registro,{path: '/'})
   };
 
   
@@ -207,7 +210,8 @@ export default function Dashboard() {
         <Grid item xs={12}>
              
               <h1>Busqueda</h1>
-              <input onChange={hanfleonChange}></input>
+              
+              <input  onChange={hanfleonChange}></input>
               <button onClick={handleClick}>Buscar</button>
 
             </Grid><br/>

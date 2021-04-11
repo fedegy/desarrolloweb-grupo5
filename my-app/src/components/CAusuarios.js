@@ -18,6 +18,40 @@ class ExerciseList extends React.Component{
         id_publicacion: 1}]
     }
 
+
+//-------------------------------------------
+login = (e) =>{
+ 
+    e.preventDefault()
+    // eslint-disable-next-line react/no-direct-mutation-state
+    this.state = {
+        carnet_login_get:  global.email
+    }
+   
+    console.log('ejecutado', this.state.carnet_login_get,this.state.constrasena_login_get)
+    axios.post("localhost:3001/BusquedaUsuario",{
+        carnet_login_get:  this.state.carnet_login_get,
+    }).then((response)=>{
+        return response.data;
+    })
+    .then(response=>{
+        if(response.length>0){
+     
+            global.id= this.state.carnet_login_get
+            alert(response)
+            //window.location.href="./Publicaciones";
+        }else{
+            alert('El usuario o la contraseña no son correctos');
+        }
+    })
+    .catch(error=>{
+        console.log(error);
+    })
+
+}
+
+
+    //=------------------------
   
     componentDidMount() {
 

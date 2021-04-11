@@ -43,8 +43,8 @@ class Exercises extends React.Component{
        
        // global.ruta='http://localhost:3001/ver_publicacion';
         
-        window.location.href = window.location.href;
-        window.location.replace('');
+        //window.location.href = window.location.href;
+        //window.location.replace('');
     }
 
     onValueChange(event) {
@@ -134,7 +134,6 @@ class Exercises extends React.Component{
                     <input 
                         type="text"
                         className="data"
-          
                         name="Curso"
                        onChange={this.handleonChnageCurso}
                          />

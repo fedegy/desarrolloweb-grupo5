@@ -270,19 +270,71 @@ app.get('/ver_publicacionCrusos',(req,res)=>{
 });
 
 //Ver publicacion segun profesor y sujeto 0-1
-app.get('/verpublicacion_profesor/:profesor_sujeto/:sujeto',(req,res)=>{
-    const profesor=req.params.profesor_sujeto;
+app.get('/verpublicacion_profesor/:sujeto',(req,res)=>{
     const sujeto=req.params.sujeto;
 
-    const verpublicacion_profesorSQL='SELECT*FROM publicacion WHERE Registro=? AND Sujeto=?'
-    base_datos.query(verpublicacion_profesorSQL,[profesor,sujeto],(err,result)=>{
+    const verpublicacion_profesorSQL='SELECT*FROM publicacion where title="Profesor" AND Sujeto=?'
+    base_datos.query(verpublicacion_profesorSQL,[sujeto],(err,result)=>{
         res.send(result)
         console.log(result)
     })
+
+
+
 });
 
 
+//Ver publicacion segun cruso y sujeto 0-1
+app.get('/verpublicacion_Curso/:sujeto',(req,res)=>{
+    const sujeto=req.params.sujeto;
+
+    const verpublicacion_profesorSQL='SELECT*FROM publicacion where title="Profesor" AND Sujeto=?'
+    base_datos.query(verpublicacion_profesorSQL,[sujeto],(err,result)=>{
+        res.send(result)
+        console.log(result)
+    })
+
+
+
+});
+
 //-------------------------------------------------------------------------
+//Busqueda de perfil USuario
+app.post('/BusquedaUsuario',(req,res)=>{
+    const txt_login_usuario=req.body.carnet_login_get;
+   
+ 
+    if(txt_login_usuario){
+       
+        const validar_autenticacion_sql="SELECT*FROM registro WHERE carnet=? ";
+        //Se verifican los valores existentes y si coinciden
+        base_datos.query(validar_autenticacion_sql,[txt_login_usuario],(err,result)=>{
+        //Se verifica la longitud de la respuesta si es mayor y si es correcta
+        if(result.length>0){
+            //Se manda mensaje en consola
+            res.send(result);
+            console.log(result.length);
+            console.log("Se encontro con exito");
+           
+        }else{
+            console.log(result.length);
+            res.send(result);
+            console.log("Error, usuario  incorrecto");
+        }
+        //Finaliza respuesta
+        res.end();
+        })
+    }
+});
+
+
+//Busqueda de los cursos ganados 
+
+
+
+
+//Insertar cursos fanados
+//---------------------------------------------------------------------
 //Puerto en donde sera ejecutado
 app.listen(3001,()=>{
     console.log('Servidor corriendo')

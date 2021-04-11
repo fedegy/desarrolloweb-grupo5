@@ -27,7 +27,9 @@ class ExerciseList extends React.Component{
           .get("http://localhost:3001/ver_coemntarios")
           .then((response) => {
             console.log(response);
-            this.setState({ /*data: response.data */});
+            this.setState({ nombre_curso: response.data });
+            console.log(this.state.nombre_curso)
+
           })
           .catch((error) => {
             console.log(error);
