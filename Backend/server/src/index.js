@@ -269,7 +269,17 @@ app.get('/ver_publicacionCrusos',(req,res)=>{
     })
 });
 
+//Ver publicacion segun profesor y sujeto 0-1
+app.get('/verpublicacion_profesor/:profesor_sujeto/:sujeto',(req,res)=>{
+    const profesor=req.params.profesor_sujeto;
+    const sujeto=req.params.sujeto;
 
+    const verpublicacion_profesorSQL='SELECT*FROM publicacion WHERE Registro=? AND Sujeto=?'
+    base_datos.query(verpublicacion_profesorSQL,[profesor,sujeto],(err,result)=>{
+        res.send(result)
+        console.log(result)
+    })
+});
 
 
 //-------------------------------------------------------------------------
