@@ -2,22 +2,50 @@ import React   from 'react'
 import ExerciseList from '../components/ExerciseList'
 import AddButton from '../components/AddButton'
 
+
+global.NProfesor='';
+global.NCurso='';
+
 class Exercises extends React.Component{
-   
-    state = {
+ 
+    state = {ruta:'',
         data:
         []
     }
+
+
+    handleonChnageCurso=(e)=>{
+        e.preventDefault();
+        global.NCurso= e.target.value
+        console.log(global.NCurso)
+    }
+
+    handleonChnageProfesor=(e)=>{
+        e.preventDefault();
+        global.NProfesor= e.target.value
+        console.log(global.NProfesor)
+    }
+    pop=(e)=>{
+     
+        this.state.ruta = 'http://localhost:3001/ver_publicacion'
+        console.log( this.state.ruta)
+    }
+
 
     async componentDidMount(){
         await this.fetchObtencion()
     }
 
-    fetchObtencion = async () => {
-        let res = await fetch('http://localhost:3001/ver_publicacion')
+    fetchObtencion = async (e) => {
+
+    try{
+        console.log('activacopnes')
+      
+        let res = await fetch(this.state.ruta)
         let data = await res.json()
        this.setState({data})
-        console.log(data)
+    }catch(error){}
+      //  console.log(data)
     }
     
 
@@ -28,19 +56,21 @@ class Exercises extends React.Component{
         <div> 
                <div className="form-group">
                     <label>
+                    Profesores
                     <input 
                       type="radio"
                       value="Filtrar por Curso"
                       name="title"
                     />
                     </label> 
-                    
+
                     <input 
                         type="text"
                         className="data"
                         placeholder="Profesor"
                         name="Profesor"
-                        value=""
+                   
+                        onChange={this.handleonChnageProfesor}
                          />
                     <br/>
 
@@ -57,13 +87,16 @@ class Exercises extends React.Component{
                         className="data"
                         placeholder="Curso"
                         name="Curso"
-                        value=""
+                     
+                        onChange={this.handleonChnageCurso}
                          />
                     <br/>
-                    <button>Filtrar</button>
+                    <button>Todo</button>
+                    <button onClick={this.pop}>Filtrar</button>
+                 
                       </div>
 
-                      <AddButton/>
+            <AddButton/>
             <ExerciseList 
             exercises={this.state.data}
             />

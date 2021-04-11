@@ -1,6 +1,6 @@
 import React from 'react'
 import Password from '../pages/Password'
-
+import axios from 'axios';
 
 class PasswordLogic extends React.Component{
     
@@ -9,37 +9,30 @@ class PasswordLogic extends React.Component{
         carnet_recuperarcontrasena_get: '',
         correo_recuperarcontrasena_get: ''
     }
-    
-       hadleChange = async e => {
+
+     handleClick = (e) =>{
         e.preventDefault()
-        console.log('se trato')
 
-       try{
-        this.state.carnet_recuperarcontrasena_get = global.CarnetContrasena;
-        this.state.correo_recuperarcontrasena_get = global.emailContrasena;
-        console.log(this.state)
-
-        let result = await fetch('http://localhost:3001/recuperar_password',{
-        method: 'post',
-        headers: {
-            'Accept':'application/json',
-            'Content-type': 'application/json',
-        },
-        body: JSON.stringify(this.state)
-        }); 
-
-        console.log('que paso:',result)
-       }catch (error){
-        console.log('eerroor')
-       }
-    }
+            axios.post("http://localhost:3001/recuperar_password",{
+                carnet_recuperarcontrasena_get : global.CarnetContrasena,
+                correo_recuperarcontrasena_get : global.emailContrasena,
+               
+            }).then((response)=>{
+               
+                const datos= JSON.stringify(response.data)
+                console.log(datos)
+                alert(datos)
+            })   
+        }
+    
+      
 
     render(){ 
       
         return(
             <div >
             <Password 
-            onClick= {this.hadleChange} />
+            onClick= {this.handleClick} />
             </div>
         )
     }
