@@ -65,6 +65,18 @@ app.post('/Comentarios',(req,res)=>{
     })
 });
 
+//Ver comentarioss
+app.get('/ver_coemntarios',(req,res)=>{
+    const publicacionid_comentarios=req.body.publicacionid_comentarios_get;
+    const selector_ComentariosSQL='SELECT*FROM comentarios WHERE id_publicacion=?'
+
+    base_datos.query(selector_ComentariosSQL,[publicacionid_comentarios],(err,result)=>{
+        console.log(result)
+        console.log('colsulta  exitosa')
+        res.send(result)
+    })
+});
+
 
 //Realizar el login del usuario registrado
 app.post('/login',(req,res)=>{
@@ -182,9 +194,9 @@ app.get('/lista_cursosdtt',(req,res)=>{
 
 //Mandar datos a comentatios
 app.post('/crear_comentario',(req,res)=>{
-    const id_publicacion=req.body.id_publicacion_get;
-    const carnet_comentario=req.body.carnet_comentario_get;
-    const descripcion_comentario=req.body.descripcion_comentario_get;
+    const id_publicacion=req.body.id_publicacion;
+    const carnet_comentario=req.body.Registro;
+    const descripcion_comentario=req.body.Descripcion;
     //Se selecciona carnet si lo solicitado es igual
     const comentarios_SQL='INSERT INTO comentariosTemp (id_publicacion,Registro,Descripcion) VALUES (?,?,?);'
     base_datos.query(comentarios_SQL,[id_publicacion,carnet_comentario,descripcion_comentario],(err,result)=>{
@@ -192,7 +204,6 @@ app.post('/crear_comentario',(req,res)=>{
         res.send(result)
     })
 });
-
 
 app.get('/mostrar_comentarios',(req,res)=>{
     const comentarios_MosSQL='SELECT*FROM comentariosTemp'

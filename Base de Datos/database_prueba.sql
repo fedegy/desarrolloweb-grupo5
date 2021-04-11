@@ -70,16 +70,17 @@ CREATE TABLE cursos(
 
 
 CREATE TABLE cursos_aprobados(
+    id INT NOT NULL AUTO_INCREMENT,
 	id_curso INT NOT NULL,
     carnet INT NOT NULL,
     nombre_curso VARCHAR(100) NOT NULL,
     creditos INT NOT NULL,
-    PRIMARY KEY (id_curso)
+    PRIMARY KEY (id)
 );
 
 
 SELECT*FROM cursos_aprobados;
-INSERT INTO cursos_aprobados (id_curso,carnet,nombre_curso,creditos) VALUES (283,201901000,'Mirna Ivonne Aldana Larrazabal',4);
+INSERT INTO cursos_aprobados (id_curso,carnet,nombre_curso,creditos) VALUES (283,201901000,'Analisis y Diseño de Sistemas 1',4);
 SELECT creditos FROM cursos_aprobados WHERE carnet=201901000;
 
 
@@ -121,10 +122,10 @@ SELECT profesor FROM cursos;
 SELECT*FROM cursos;
 
 
-//Comentaros Temporales
-CREATE TABLE comentariosTemp(
+cREATE TABLE comentariosTemp(
+	id	INT NOT NULL AUTO_INCREMENT,
     id_publicacion INT NOT NULL,
     Registro INT NOT NULL,
     Descripcion VARCHAR(600) NOT NULL,
-    PRIMARY KEY(id_publicacion)
+    PRIMARY KEY(id)
 );

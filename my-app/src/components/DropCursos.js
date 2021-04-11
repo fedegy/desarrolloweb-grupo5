@@ -29,6 +29,7 @@ class DropCursos extends Component {
                 </option>
               ))}
             </select>
+            
           </div>
         </div>
       </center>

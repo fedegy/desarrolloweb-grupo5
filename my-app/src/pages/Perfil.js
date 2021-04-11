@@ -18,6 +18,9 @@ import { mainListItems } from "./listItems";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { CursosAprobadosMain, PerfilTable } from "./Orders";
 import DropPerfil from "../components/DropPerfil";
+import CA from '../components/CAPerfil'
+
+
 
 const drawerWidth = 240;
 
@@ -168,7 +171,12 @@ export default function Dashboard() {
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <Paper className={fixedHeightPaper}>
-                <PerfilTable />
+        
+              <h1>Mi permil</h1>
+
+
+
+
               </Paper>
             </Grid>
             <Grid item xs={12}>
@@ -178,7 +186,10 @@ export default function Dashboard() {
             </Grid>
             <Grid item xs={12}>
               <Paper className={classes.paper}>
-                <CursosAprobadosMain />
+            
+          
+              <CA/>
+
               </Paper>
             </Grid>
           </Grid>

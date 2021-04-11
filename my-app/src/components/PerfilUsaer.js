@@ -1,33 +1,33 @@
 import React from 'react';
 import {TableContainer,Table,TableHead,TableBody,TableRow,TableCell} from '@material-ui/core';
-import Card from '../components/Card'
 import axios from 'axios'
-import Globales from '../components/globales'
-function obtener(id){
 
-    global.setID=id
-console.log(global.setID)
-}
 
 
 
 class ExerciseList extends React.Component{
+   
     state = {
-        data:
-        [{Descripcion: "Buen catedratico",
-        Registro: 202000119,
-        id_publicacion: 1}]
-    }
+        nombre_curso: [],
+    };
     
+    state = {
+        creditos: 1,
+        data:
+        [{ Registro: 20,
+        nombres: "Sergie",
+        apellidos: "arizandieta",
+        correo:"gmials"}]
+    }
+
+  
     componentDidMount() {
-        console.log('aq')
-        console.log(global.idComentario)
-       
+
         axios
           .get("http://localhost:3001/ver_coemntarios")
           .then((response) => {
             console.log(response);
-            this.setState({ nombre_curso: response.data });
+            this.setState({ /*data: response.data */});
           })
           .catch((error) => {
             console.log(error);
@@ -35,17 +35,19 @@ class ExerciseList extends React.Component{
       }
     render(){ 
      
-console.log(Card.datos)
-
-    
     return(
         <div>
+              
+
             <TableContainer>
                 <Table> 
                     <TableHead>
                         <TableRow>
-                            <TableCell>Usuario</TableCell>
-                            <TableCell>Comentario</TableCell>
+                        <TableCell>Carnet </TableCell>
+                            <TableCell>Nombre </TableCell>
+                            <TableCell>Apellido </TableCell>
+                            <TableCell>Correo</TableCell>
+                            <TableCell>Creditos</TableCell>
                         </TableRow>
                     </TableHead> 
 
@@ -53,10 +55,14 @@ console.log(Card.datos)
                     {this.state.data.map((data)=>(
                         <TableRow>
                         <TableCell>{data.Registro}</TableCell>
-                        <TableCell>{data.Descripcion}</TableCell>
+                        <TableCell>{data.nombres}</TableCell>
+                        <TableCell>{data.apellidos}</TableCell>
+                        <TableCell>{data.correo}</TableCell>
+                        <TableCell>{this.state.creditos}</TableCell>
                         </TableRow>
                     ))} 
-
+                   
+                   
                     </TableBody>
                 </Table>
             </TableContainer>
@@ -64,6 +70,7 @@ console.log(Card.datos)
 
         </div>
     )
-}}
+}
+}
 
 export default ExerciseList

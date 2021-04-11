@@ -7,32 +7,35 @@ import FaceIcon from "@material-ui/icons/Face";
 import PeopleIcon from "@material-ui/icons/People";
 import BarChartIcon from "@material-ui/icons/BarChart";
 import LayersIcon from "@material-ui/icons/Layers";
+import {Link} from 'react-router-dom'
 
 export const mainListItems = (
   <div>
-    <ListItem button>
-      <ListItemIcon>
-        <DashboardIcon />
-      </ListItemIcon>
-      <ListItemText primary="Dashboard" />
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <BarChartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Comentarios" />
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <FaceIcon />
-      </ListItemIcon>
-      <ListItemText primary="Perfil" />
-    </ListItem>
-    <ListItem button href="./Usuarios">
-      <ListItemIcon>
-        <PeopleIcon />
-      </ListItemIcon>
-      <ListItemText primary="Usuarios" />
-    </ListItem>
+     <Link to="/Publicaciones">
+      <ListItem button>
+         <ListItemIcon><DashboardIcon /></ListItemIcon>
+         <ListItemText primary="Dashboard" />
+      </ListItem>
+      </Link>
+   
+       <ListItem button>
+           <ListItemIcon>  <BarChartIcon /> </ListItemIcon>
+           <ListItemText primary="Comentarios" />
+       </ListItem>
+    
+       <Link to="/Perfil">
+        <ListItem button>
+           <ListItemIcon> <FaceIcon /> </ListItemIcon>
+           <ListItemText primary="Perfil" />
+         </ListItem>
+         </Link>
+
+         <Link to="/Usuarios">
+          <ListItem button href="./Usuarios">
+             <ListItemIcon>   <PeopleIcon /> </ListItemIcon>
+             <ListItemText primary="Usuarios" />  
+          </ListItem>
+          </Link>
+            
   </div>
 );

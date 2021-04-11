@@ -17,8 +17,14 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import { mainListItems } from "./listItems";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { Cursos } from "./Orders";
+import PU from '../components/PerfilUsaer'
+import CA from '../components/CAusuarios'
+import axios from 'axios';
+
 
 const drawerWidth = 240;
+
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -99,7 +105,41 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
+const Registro={
+  Registro:''
+}
 export default function Dashboard() {
+
+
+  const hanfleonChange = (event) => {
+    event.preventDefault();
+     Registro.Registro = event.target.value;
+     console.log(Registro.Registro)
+  };
+
+  const handleClick = (event) => {
+    event.preventDefault();
+     console.log(Registro.Registro)
+  };
+
+  
+ /*
+ const handleClick = () =>{
+    console.log('')   
+        axios.post("http://localhost:3001/Comentarios",{
+          publicacionid_comentarios_get: state.publicacionid_comentarios_get,
+           
+        }).then((response)=>{
+            global.id=state.publicacionid_comentarios_get
+            const datos= response.data
+          
+            console.log(datos)
+        })   
+    }*/
+
+
+
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
@@ -164,10 +204,24 @@ export default function Dashboard() {
         <div className={classes.appBarSpacer} />
 
         <Container maxWidth="lg" className={classes.container}>
+        <Grid item xs={12}>
+             
+              <h1>Busqueda</h1>
+              <input onChange={hanfleonChange}></input>
+              <button onClick={handleClick}>Buscar</button>
+
+            </Grid><br/>
+        <Grid item xs={12}>
+              <Paper className={fixedHeightPaper}>
+              <h1>User</h1>
+              <PU/>
+              </Paper>
+            </Grid>
+            <br/>
           <Grid container spacing={3}>
             <Grid item xs={12}>
               <Paper className={classes.paper}>
-                <Cursos />
+                <CA />
               </Paper>
             </Grid>
           </Grid>

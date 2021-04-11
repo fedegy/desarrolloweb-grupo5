@@ -1,33 +1,31 @@
 import React from 'react';
 import {TableContainer,Table,TableHead,TableBody,TableRow,TableCell} from '@material-ui/core';
-import Card from '../components/Card'
 import axios from 'axios'
-import Globales from '../components/globales'
-function obtener(id){
 
-    global.setID=id
-console.log(global.setID)
-}
 
 
 
 class ExerciseList extends React.Component{
+   
+    state = {
+        nombre_curso: [],
+    };
+    
     state = {
         data:
-        [{Descripcion: "Buen catedratico",
-        Registro: 202000119,
+        [{ creditos: 4,
+        nombre_curso: "IPC1",
         id_publicacion: 1}]
     }
-    
+
+  
     componentDidMount() {
-        console.log('aq')
-        console.log(global.idComentario)
-       
+
         axios
           .get("http://localhost:3001/ver_coemntarios")
           .then((response) => {
             console.log(response);
-            this.setState({ nombre_curso: response.data });
+            this.setState({ /*data: response.data */});
           })
           .catch((error) => {
             console.log(error);
@@ -35,25 +33,24 @@ class ExerciseList extends React.Component{
       }
     render(){ 
      
-console.log(Card.datos)
-
-    
     return(
         <div>
+                <div>  <h1>Cursos Aprobados</h1></div>
+
             <TableContainer>
                 <Table> 
                     <TableHead>
                         <TableRow>
-                            <TableCell>Usuario</TableCell>
-                            <TableCell>Comentario</TableCell>
+                            <TableCell>Curso</TableCell>
+                            <TableCell>Creditos</TableCell>
                         </TableRow>
                     </TableHead> 
 
                     <TableBody>
                     {this.state.data.map((data)=>(
                         <TableRow>
-                        <TableCell>{data.Registro}</TableCell>
-                        <TableCell>{data.Descripcion}</TableCell>
+                        <TableCell>{data.nombre_curso}</TableCell>
+                        <TableCell>{data.creditos}</TableCell>
                         </TableRow>
                     ))} 
 
@@ -64,6 +61,7 @@ console.log(Card.datos)
 
         </div>
     )
-}}
+}
+}
 
 export default ExerciseList

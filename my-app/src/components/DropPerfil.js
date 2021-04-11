@@ -6,15 +6,15 @@ import axios from 'axios'
 
 class DropPerfil extends Component {
   state = {
-    curso: [],
+    nombre_curso: [],
   };
 
   componentDidMount() {
     axios
-      .get("http://localhost:3001/select_profesor")
+      .get("http://localhost:3001/lista_cursosdtt")
       .then((response) => {
         console.log(response);
-        this.setState({ curso: response.data });
+        this.setState({ nombre_curso: response.data });
       })
       .catch((error) => {
         console.log(error);
@@ -26,25 +26,22 @@ class DropPerfil extends Component {
         <div className="App">
           <Grid container spacing={1}>
             <Grid item xs={12}>
-              <select name="ciudades" className="forme-control">
-                {this.state.curso.map((elemento) => (
-                  <option key={elemento.id} value={elemento.id}>
-                    {elemento.curso}
-                  </option>
-                ))}
-              </select>
+            <select name="ciudades" className="forme-control">
+              {this.state.nombre_curso.map((elemento) => (
+                <option key={elemento.id} value={elemento.id}>
+                  {elemento.nombre_curso}
+                </option>
+              ))}
+            </select>
             </Grid>
             <br></br>
             <Grid item xs={8}>
+          
               <Button type="submit" variant="contained" color="primary">
                 Agregar Curso
               </Button>
             </Grid>
-            <Grid item xs={8}>
-              <Button type="submit" variant="contained" color="primary">
-                Eliminar Curso
-              </Button>
-            </Grid>
+           
           </Grid>
         </div>
       </center>

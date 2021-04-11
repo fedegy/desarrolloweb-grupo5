@@ -6,29 +6,45 @@ import Post from "../pages/Exercises";
 import New from "../pages/ExercisesNew";
 import tablas from "../pages/Comentarios";
 import Dashboard from "../pages/Dashboard";
-//<<<<<<< HEAD
+
 import Usuarios from "../pages/Usuarios";
 import Perfil from "../pages/Perfil";
-//=======
+
 import DROPS from "../components/DropProfesores";
-//>>>>>>> 440b861533af6c884fce0e3d4456edbe58160998
+import DropCursos from "../components/DropCursos";
+
 import test from '../pages/test'
+
+
+import tablasCA from "../components/CAPerfil";
 
 const App = () => {
   return (
     <BrowserRouter>
       <Switch>
-      <Route exact path="/test" component={test} />
-        <Route exact path="/drops" component={DROPS} />
-        <Route exact path="/Comentarios" component={tablas} />
-        <Route exact path="/Post" component={Post} />
-        <Route exact path="/exercise/new" component={New} />
-        <Route exact path="/Registro" component={Registro} />
-        <Route exact path="/reiniciar-contraseña" component={Password} />
-        <Route exact path="/Nuevo-Usuario" component={NewUsuario} />
-        <Route exact path="/Dashboard" component={Dashboard} />
-        <Route exact path="/Usuarios" component={Usuarios} />
-        <Route exact path="/Perfil" component={Perfil} />
+
+      <Route exact path="/Registro" component={Registro} />
+      <Route exact path="/reiniciar-contraseña" component={Password} />
+      <Route exact path="/Nuevo-Usuario" component={NewUsuario} />
+
+      <Route exact path="/Publicaciones" component={test} />
+      <Route exact path="/exercise/new" component={New} />
+
+      <Route exact path="/Usuarios" component={Usuarios} />
+      <Route exact path="/Perfil" component={Perfil} /> 
+
+      <Route exact path="/Comentarios" component={tablas} />
+      <Route exact path="/tablaCA" component={tablasCA} />
+     
+       
+        
+      <Route exact path="/drops" component={DROPS} />
+      <Route exact path="/DropCursos" component={DropCursos} />
+
+   
+
+      <Route exact path="/Post" component={Post} />
+      <Route exact path="/Dashboard" component={Dashboard} />
       </Switch>
     </BrowserRouter>
   );

@@ -32,7 +32,7 @@ class LoginLogic extends React.Component{
         .then(response=>{
             if(response.length>0){
          
-                window.location.href="./Post";
+                window.location.href="./Publicaciones";
             }else{
                 alert('El usuario o la contraseña no son correctos');
             }

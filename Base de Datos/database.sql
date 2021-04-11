@@ -1,5 +1,5 @@
 CREATE DATABASE PORTAL_ESTUDIANTIL;		/*Creacion de Base de Datos*/
-USE PORTAL_ESTUDIANTIL;					/*Usar Base de Datos*/	
+					/*Usar Base de Datos*/	
 
 /*Creación de tabla*/
 CREATE TABLE registro(
