@@ -414,7 +414,26 @@ app.get('/AsignarCursos',(req,res)=>{
         })
     }
 });
+//Update registto============================================
+//UPDATE registro SET nombres='' WHERE registro=20202022;
 
+app.post('/ActialiarUsuario',(req,res)=>{
+    const carnet=req.body.carnet;
+    const nombres=req.body.nombres;
+    const apellidos=req.body.apellidos;
+    const contrasena=req.body.contrasena;
+    const correo=req.body.correo;
+    //Se selecciona carnet si lo solicitado es igual
+    const comentarios_SQL='UPDATE registro SET nombres=?,apellidos=?,contrasena=?,correo=? WHERE carnet=?;'
+    base_datos.query(comentarios_SQL,[nombres,apellidos,contrasena,correo,carnet],(err,result)=>{
+        console.log(result)
+        res.send(result)
+    })
+});
+
+
+
+//========================================================
 //----------------------------------------------
 //UPDATE cursos_aprobados SET carnet=202000119 WHERE carnet='201901000'
 //Insertar cursos fanados

@@ -20,8 +20,13 @@ import { CursosAprobadosMain, PerfilTable } from "./Orders";
 import DropPerfil from "../components/DropPerfil";
 import CA from '../components/CAPerfil'
 import PU from '../components/MIperfil'
+import axios from 'axios'
+import Cookies from 'universal-cookie'
 
-
+global.Nombre=''
+global.Apellido=''
+global.Correo=''
+global.Contrasena=''
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -104,6 +109,56 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Dashboard() {
+
+const HandleChangeNombre = (e)=>{
+  e.preventDefault();
+  global.Nombre=e.target.value
+  console.log(global.Nombre)
+}
+
+const HandleChangeApellido = (e)=>{
+  e.preventDefault();
+
+  global.Apellido=e.target.value
+  console.log(global.Apellido)
+}
+
+
+const HandleChangeCorreo= (e)=>{
+  e.preventDefault();
+  global.Correo= e.target.value
+  console.log(global.Correo)
+}
+
+
+const HandleChangeContrasena = (e)=>{
+  e.preventDefault();
+  global.Contrasena= e.target.value
+  console.log(global.Contrasena)
+}
+
+
+const HandleClick = (e)=>{
+  const cookies = new Cookies();
+  console.log( global.Nombre, ' ',global.Apellido, ' ', global.Correo, ' ',  global.Contrasena )
+
+   
+  axios.post("http://localhost:3001/ActialiarUsuario",{
+    carnet:cookies.get('idUsuario'),
+    nombres:  global.Nombre,
+    apellidos: global.Apellido,
+    contrasena:global.Contrasena ,
+    correo:global.Correo
+  }).then((response)=>{
+  alert('¡Datos actualizados!')
+    window.location.href = window.location.href;
+    window.location.replace('');
+  })
+
+
+}
+
+
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
@@ -184,17 +239,39 @@ export default function Dashboard() {
 
 
            
-            <Grid item xs={12}>
+          <center>
               <Paper className={fixedHeightPaper}>
-        
-              <input ></input>
+                
+              <label>Nombre
+              <input onChange={HandleChangeNombre} ></input>
+              </label>
 
+              <br/>
 
-              <PU/>
+              <label>Apellido<t/>
+              <input onChange={HandleChangeApellido}></input> 
+              </label>
+
+              <br/>
+
+              <label>Correo
+              <input onChange={HandleChangeCorreo}></input>
+              </label>
+
+              <br/>
+
+              <label>Contraseña
+              <input onChange={HandleChangeContrasena} ></input>
+              </label>
+
+             
+              <br/>
+
+              <button onClick={HandleClick}>Editar</button>
 
               </Paper>
-            </Grid>
-
+           
+              </center>
 
 
             <Grid item xs={12}>

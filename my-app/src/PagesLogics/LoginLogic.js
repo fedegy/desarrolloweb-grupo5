@@ -36,6 +36,7 @@ class LoginLogic extends React.Component{
              
                 const cookies = new Cookies();
                 cookies.set('idUsuario',this.state.carnet_login_get,{path: '/'});
+                cookies.set('aux',0,{path: '/'});
                 cookies.set('rutaPublicaciones','http://localhost:3001/ver_publicacion',{path: '/'})
              
                 window.location.href="./Publicaciones";

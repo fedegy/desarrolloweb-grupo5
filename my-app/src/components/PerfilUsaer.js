@@ -35,8 +35,20 @@ componentDidMount(){
            carnet_login_get:  this.state.carnet_login_get,
        }).then((response)=>{
            this.setState({data:response.data });     
+            global.data = cookies.get('aux')
+         if(response.data.length>0  ){
+
+
+         }else{
+
+            if(cookies.get('idRegistroBusqueda')!== ""){
+                alert('No se pudo encontrar al usuario')
+            }
+           
+         }
        })
        .catch(error=>{
+      
        })
 
        
@@ -46,12 +58,14 @@ componentDidMount(){
      
      
         this.setState({creditos:JSON.stringify(response.data) });   
-     console.log(this.state.creditos)
+         console.log(this.state.creditos)
          //  this.setState({data:response.data });     
        })
        .catch(error=>{
        })
    
+  
+     
    }
     render(){ 
      
