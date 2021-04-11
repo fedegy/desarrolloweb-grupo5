@@ -124,6 +124,8 @@ export default function Dashboard() {
     event.preventDefault();
     const cookies = new Cookies();
     cookies.set('idRegistroBusqueda',global.Registro,{path: '/'})
+    window.location.href = window.location.href;
+    window.location.replace('');
   };
 
   

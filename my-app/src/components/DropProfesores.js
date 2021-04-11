@@ -11,8 +11,9 @@ class DropProfesores extends Component {
         axios
             .get("http://localhost:3001/select_profesor")
             .then((response)=>{
-                console.log(response, 'siee')
+               
             this.setState({profesor: response.data})
+            console.log(this.state.profesor)
             })
             .catch((error) => {
                 console.log(error);

@@ -91,6 +91,7 @@ class Exercises extends React.Component{
         this.state.ruta = cookies.get('rutaPublicaciones')
         let res = await fetch(this.state.ruta)
         let data = await res.json()
+        console.log(data)
        this.setState({data})
        
     }catch(error){}

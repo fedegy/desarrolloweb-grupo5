@@ -172,10 +172,10 @@ app.get('/ver_publicacion',(req,res)=>{
 
 //Suma de creditos
 app.post('/suma_cursosaprobados',(req,res)=>{
-    const carnet_cursos_aprobados=req.body.carnet_cursosaprobados_get;
+    const txt_login_usuario=req.body.carnet_login_get;
     //Se selecciona carnet si lo solicitado es igual
-    const suma_cursosSQL='SELECT creditos FROM cursos_aprobados WHERE carnet=?'
-    base_datos.query(suma_cursosSQL,[carnet_cursos_aprobados],(err,result)=>{
+    const suma_cursosSQL='SELECT SUM(creditos) AS Creditos FROM cursos_aprobados WHERE carnet=?'
+    base_datos.query(suma_cursosSQL,[txt_login_usuario],(err,result)=>{
         console.log(result)
         res.send(result)
     })
@@ -218,7 +218,7 @@ app.get('/mostrar_comentarios',(req,res)=>{
 //Mostrar comentario segun id de publicacion
 app.get('/ver_comentarios_publicacion/:id_publicacion_comentario',(req,res)=>{
     const id_publicacion_comentario=req.params.id_publicacion_comentario
-    const vercomentarioid_SQL='SELECT * FROM comentariosTemp WHERE id_publicacion=?' 
+    const vercomentarioid_SQL='SELECT * FROM comentarios WHERE id_publicacion=?' 
     base_datos.query(vercomentarioid_SQL,[id_publicacion_comentario],(err,result)=>{
         res.send(result)
         console.log(result)
@@ -322,9 +322,7 @@ app.get('/verpublicacion_Curso/:sujeto',(req,res)=>{
 app.post('/BusquedaUsuario',(req,res)=>{
     const txt_login_usuario=req.body.carnet_login_get;
    
- 
     if(txt_login_usuario){
-       
         const validar_autenticacion_sql="SELECT*FROM registro WHERE carnet=? ";
         //Se verifican los valores existentes y si coinciden
         base_datos.query(validar_autenticacion_sql,[txt_login_usuario],(err,result)=>{
@@ -348,10 +346,33 @@ app.post('/BusquedaUsuario',(req,res)=>{
 
 
 //Busqueda de los cursos ganados 
+app.post('/BusquedaUsuarioCursos',(req,res)=>{
+    const txt_login_usuario=req.body.carnet_login_get;
+   
+    if(txt_login_usuario){
+        const validar_autenticacion_sql="SELECT * FROM cursos_aprobados WHERE carnet=? ";
+        //Se verifican los valores existentes y si coinciden
+        base_datos.query(validar_autenticacion_sql,[txt_login_usuario],(err,result)=>{
+        //Se verifica la longitud de la respuesta si es mayor y si es correcta
+        if(result.length>0){
+            //Se manda mensaje en consola
+            res.send(result);
+            console.log(result.length);
+            console.log("Se encontro con exito");
+           
+        }else{
+            console.log(result.length);
+            res.send(result);
+            console.log("Error, usuario  incorrecto");
+        }
+        //Finaliza respuesta
+        res.end();
+        })
+    }
+});
 
 
-
-
+//UPDATE cursos_aprobados SET carnet=202000119 WHERE carnet='201901000'
 //Insertar cursos fanados
 //---------------------------------------------------------------------
 //Puerto en donde sera ejecutado
