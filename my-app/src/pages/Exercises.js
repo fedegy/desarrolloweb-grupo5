@@ -6,6 +6,7 @@ import Cookies from 'universal-cookie'
 global.NProfesor='';
 global.NCurso='';
 global.ruta='';
+global.filtro='';
 class Exercises extends React.Component{
 
 
@@ -15,15 +16,53 @@ class Exercises extends React.Component{
     }
 
     handleClick (){
+        const cookies = new Cookies();
 
 
+
+   
+
+        if(global.NProfesor=="" && global.filtro=="Profesor"){
+         
+            alert(global.filtro)
+            cookies.set('rutaPublicaciones','http://localhost:3001/ver_publicacionProfesores',{path: '/'})
+        }
+
+        if(global.NCurso=="" && global.filtro=="Curso"){
+            cookies.set('rutaPublicaciones','http://localhost:3001/ver_publicacionCrusos',{path: '/'})
+            alert(global.filtro)
+
+        }
       
+        
+        if( global.filtro=="Todos"){
+            cookies.set('rutaPublicaciones','http://localhost:3001/ver_publicacion',{path: '/'})
+            alert(global.filtro)
+
+        }
        
        // global.ruta='http://localhost:3001/ver_publicacion';
         
-        //window.location.href = window.location.href;
-        //window.location.replace('');
+        window.location.href = window.location.href;
+        window.location.replace('');
     }
+
+    onValueChange(event) {
+  
+        global.filtro= event.target.value
+
+   
+      }
+
+
+
+    handleChangeRadios=(e)=> {
+        this.setState({
+          selectedOption: e.target.value
+        });
+        global.filtro=this.selectedOption
+        alert(this.selectedOption)
+      }
 
     handleonChnageCurso=(e)=>{
         e.preventDefault();
@@ -45,10 +84,10 @@ class Exercises extends React.Component{
 
     fetchObtencion = async (e) => {
         const cookies = new Cookies();
-        alert(cookies.get('rutaPublicaciones'))
+       // alert(cookies.get('rutaPublicaciones'))
 
     try{
-        console.log('rutas:')
+    
         this.state.ruta = cookies.get('rutaPublicaciones')
         let res = await fetch(this.state.ruta)
         let data = await res.json()
@@ -61,53 +100,61 @@ class Exercises extends React.Component{
   
     
     render(){
-     
+       
+        const cookies = new Cookies();
+
 
         return(
         <div> 
                <div className="form-group">
-                    <label>
-                    Profesores
-                    <input 
-                      type="radio"
-                      value="Filtrar por Curso"
-                      name="title"
-                    />
+               <pre><label>
+                  
+                    <input type="radio" value="Profesor" 
+                    checked={this.state.selectedOption === "Profesor"}
+                    onChange={this.onValueChange} />
+                  
+                     Profesores
                     </label> 
-
+                  
                     <input 
                         type="text"
                         className="data"
-                        placeholder="Profesor"
+                      
                         name="Profesor"
-                   
                         onChange={this.handleonChnageProfesor}
-                         />
-                    <br/>
+                         />  </pre>
+                 
 
-                    <label>
-                        Curso
-                    <input 
-                        type="radio"
-                        name="title"
-                        value="Filtrar por Catedrático."
-                    />
-                    </label>
+                    <pre><label>
+                    <input type="radio" value="Curso" 
+                      checked={this.state.selectedOption === "Curso"}
+                      onChange={this.onValueChange}/>
+                      Curso
+                    </label> 
                     <input 
                         type="text"
                         className="data"
-                        placeholder="Curso"
+          
                         name="Curso"
-                     
-                        onChange={this.handleonChnageCurso}
+                       onChange={this.handleonChnageCurso}
                          />
-                    <br/>
-                    <button onClick={this.getData}>Todo</button>
+                    <br/></pre>
+
+                    <pre><label>
+                  
+                  <input type="radio" value="Todos" 
+                  checked={this.state.selectedOption === "Todos"}
+                  onChange={this.onValueChange} />
+                
+                   Todos
+                  </label> 
+                
+                </pre>
+
                     <button onClick={this.handleClick}>Filtrar</button>
-                    <button onClick={this.handleClick}>add</button>
                  
                  
-                      </div>
+             </div>
 
             <AddButton/>
 

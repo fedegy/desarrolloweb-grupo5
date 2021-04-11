@@ -23,18 +23,18 @@ class ExercisesForm extends React.Component{
 
                     <div className="form-group">
                     <label>
-                        Profesor
+                        
                     <input 
                       type="radio"
                       value="Profesor"
                       name="title"
                       checked={value === "Profesor"}
                       onChange={onChange}
-                    />
+                    />Profesor
 
                     </label> <br/>
                     <label>
-                        Curso
+                        
                     <input 
                         type="radio"
                         name="title"
@@ -42,7 +42,7 @@ class ExercisesForm extends React.Component{
                         checked={value === "Curso"}
                         onChange={onChange}
                     />
-
+Curso
                     </label>
                       </div>
 

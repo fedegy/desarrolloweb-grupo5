@@ -245,7 +245,34 @@ app.post('/eliminar_comentario',(req,res)=>{
     })
 
 });
+//--------------------------------------------------------------
 
+
+
+//Ver publicacion Porfesores
+app.get('/ver_publicacionProfesores',(req,res)=>{
+    //Se descarta ID y fecha porque se ingresan automaticamente
+    const ver_publicacionSQL='SELECT * FROM publicacion where title="Profesor"'
+    base_datos.query(ver_publicacionSQL,(err,result)=>{
+        console.log(result)
+        res.send(result)
+    })
+});
+
+//Ver publicacion Crusos
+app.get('/ver_publicacionCrusos',(req,res)=>{
+    //Se descarta ID y fecha porque se ingresan automaticamente
+    const ver_publicacionSQL='SELECT * FROM publicacion where title="Curso"'
+    base_datos.query(ver_publicacionSQL,(err,result)=>{
+        console.log(result)
+        res.send(result)
+    })
+});
+
+
+
+
+//-------------------------------------------------------------------------
 //Puerto en donde sera ejecutado
 app.listen(3001,()=>{
     console.log('Servidor corriendo')
