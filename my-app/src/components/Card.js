@@ -4,7 +4,7 @@ import './styles/Card.css'
 import {Link} from 'react-router-dom'
 import axios from 'axios';
 import Globales from './globales'
-
+import Cookies from 'universal-cookie'
 
 
  function Card({ title, description, Registro, Sujeto,Fecha,id })  {
@@ -17,16 +17,27 @@ import Globales from './globales'
 
     
    const handleClick = () =>{
-    console.log(state.publicacionid_comentarios_get)   
+    const cookies = new Cookies();
+   
+
+
+  
         axios.post("http://localhost:3001/Comentarios",{
             publicacionid_comentarios_get: state.publicacionid_comentarios_get,
            
         }).then((response)=>{
             global.id=state.publicacionid_comentarios_get
+
+            cookies.set('idCard',global.id,{path: '/'});    
+
             const datos= response.data
+            console.log( cookies.get('idCard'))
+           
+            window.location.href="./Comentarios";
           
-            console.log(datos)
         })   
+
+      
     }
     
 return(
@@ -50,7 +61,7 @@ return(
                     <p>{Fecha}</p>
                 
         
-                    <button class="redondo" /*onClick={handleClick}*/ onClick={handleClick}>⬇⬇⬇  </button>
+                    <button class="redondo" onClick={handleClick}>⬇⬇⬇  </button>
                 </div>
             </div>
         </div>
