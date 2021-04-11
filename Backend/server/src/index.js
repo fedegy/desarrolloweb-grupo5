@@ -205,11 +205,23 @@ app.post('/crear_comentario',(req,res)=>{
     })
 });
 
+//Mostrar Comentarios Temporales
 app.get('/mostrar_comentarios',(req,res)=>{
     const comentarios_MosSQL='SELECT*FROM comentariosTemp'
     base_datos.query(comentarios_MosSQL,(err,result)=>{
         console.log(result)
         res.send(result)
+    })
+});
+
+
+//Mostrar comentario segun id de publicacion
+app.get('/ver_comentarios_publicacion/:id_publicacion_comentario',(req,res)=>{
+    const id_publicacion_comentario=req.params.id_publicacion_comentario
+    const vercomentarioid_SQL='SELECT * FROM comentariosTemp WHERE id_publicacion=?' 
+    base_datos.query(vercomentarioid_SQL,[id_publicacion_comentario],(err,result)=>{
+        res.send(result)
+        console.log(result)
     })
 });
 
