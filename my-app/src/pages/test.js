@@ -111,6 +111,11 @@ export default function Dashboard() {
   };
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
+  const HandleClick = () =>{
+    alert('cerrando sesión')
+    window.location.href="./Registro";   
+  }
+
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -119,6 +124,7 @@ export default function Dashboard() {
         className={clsx(classes.appBar, open && classes.appBarShift)}
       >
         <Toolbar className={classes.toolbar}>
+          
           <IconButton
             edge="start"
             color="inherit"
@@ -131,6 +137,7 @@ export default function Dashboard() {
           >
             <MenuIcon />
           </IconButton>
+
           <Typography
             component="h1"
             variant="h6"
@@ -140,9 +147,17 @@ export default function Dashboard() {
           >
             Dashboard
           </Typography>
-          <IconButton color="inherit">
+       
+
+
+
+          <IconButton color="inherit" onClick={HandleClick}>
             <ExitToAppIcon />
           </IconButton>
+
+
+
+
         </Toolbar>
       </AppBar>
       <Drawer

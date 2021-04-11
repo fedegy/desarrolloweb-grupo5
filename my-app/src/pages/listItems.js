@@ -18,10 +18,7 @@ export const mainListItems = (
       </ListItem>
       </Link>
    
-       <ListItem button>
-           <ListItemIcon>  <BarChartIcon /> </ListItemIcon>
-           <ListItemText primary="Comentarios" />
-       </ListItem>
+    
     
        <Link to="/Perfil">
         <ListItem button>
