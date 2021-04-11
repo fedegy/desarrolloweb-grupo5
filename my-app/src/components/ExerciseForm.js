@@ -101,7 +101,7 @@ Curso
 
                          Submit
                      </button>
-                     <Link to="/Post">
+                     <Link to="/Publicaciones">
                      <button>
                          Regresar
                      </button>

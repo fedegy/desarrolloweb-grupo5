@@ -293,7 +293,7 @@ app.get('/verpublicacion_profesor/:sujeto',(req,res)=>{
 
 
 //Ver publicacion segun curso y sujeto 0-1
-app.get('/verpublicacion_curso/:sujeto',(req,res)=>{
+app.get('/verpublicacion_Curso/:sujeto',(req,res)=>{
    const sujeto=req.params.sujeto;
    const verpublicacion_cursoSQL='SELECT * FROM publicacion WHERE title="Curso" AND Sujeto=?'
    base_datos.query(verpublicacion_cursoSQL,[sujeto],(err,result)=>{
@@ -303,19 +303,6 @@ app.get('/verpublicacion_curso/:sujeto',(req,res)=>{
 });
 
 
-//Ver publicacion segun cruso y sujeto 0-1
-app.get('/verpublicacion_Curso/:sujeto',(req,res)=>{
-    const sujeto=req.params.sujeto;
-
-    const verpublicacion_profesorSQL='SELECT * FROM publicacion WHERE title="Profesor" AND Sujeto=?'
-    base_datos.query(verpublicacion_profesorSQL,[sujeto],(err,result)=>{
-        res.send(result)
-        console.log(result)
-    })
-
-
-
-});
 
 //-------------------------------------------------------------------------
 //Busqueda de perfil USuario
@@ -372,6 +359,63 @@ app.post('/BusquedaUsuarioCursos',(req,res)=>{
 });
 
 
+
+//Asignar cursos
+app.post('/Asignar_cursos',(req,res)=>{
+    const id_publicacion=req.body.id_curso;
+    const carnet_comentario=req.body.carnet;
+    const descripcion_comentario=req.body.nombre_curso;
+    const descripcion_crediitos=req.body.creditos;
+    //Se selecciona carnet si lo solicitado es igual
+    const comentarios_SQL='INSERT INTO cursos_aprobados (id_curso,carnet,nombre_curso,creditos) VALUES (?,?,?,?);'
+    base_datos.query(comentarios_SQL,[id_publicacion,carnet_comentario,descripcion_comentario,descripcion_crediitos],(err,result)=>{
+        console.log(result)
+        res.send(result)
+    })
+});
+
+//======================================
+
+//Ingresar cursos apobados 
+app.get('/BuscarAsignarCursos/:nombre_curso',(req,res)=>{
+    const txt_login_usuario=req.params.nombre_curso;
+    const validar_autenticacion_sql='SELECT * FROM cursos WHERE nombre_curso = ? ';
+        base_datos.query(validar_autenticacion_sql,[txt_login_usuario],(err,result)=>{
+         
+            res.send(result);
+            console.log(result.length);
+        })
+});
+
+//----------------------------------------------
+//----------------------------------------
+//Ingresar cursos apobados 
+app.get('/AsignarCursos',(req,res)=>{
+    const txt_login_usuario=req.body.carnet_login_get;
+   
+    if(txt_login_usuario){
+        const validar_autenticacion_sql="SELECT * FROM cursos_aprobados WHERE carnet=? ";
+        //Se verifican los valores existentes y si coinciden
+        base_datos.query(validar_autenticacion_sql,[txt_login_usuario],(err,result)=>{
+        //Se verifica la longitud de la respuesta si es mayor y si es correcta
+        if(result.length>0){
+            //Se manda mensaje en consola
+            res.send(result);
+            console.log(result.length);
+            console.log("Se encontro con exito");
+           
+        }else{
+            console.log(result.length);
+            res.send(result);
+            console.log("Error, usuario  incorrecto");
+        }
+        //Finaliza respuesta
+        res.end();
+        })
+    }
+});
+
+//----------------------------------------------
 //UPDATE cursos_aprobados SET carnet=202000119 WHERE carnet='201901000'
 //Insertar cursos fanados
 //---------------------------------------------------------------------

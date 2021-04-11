@@ -1,7 +1,7 @@
 import React from 'react';
 import {TableContainer,Table,TableHead,TableBody,TableRow,TableCell} from '@material-ui/core';
 import axios from 'axios'
-
+import Cookies from 'universal-cookie'
 
 
 
@@ -19,19 +19,26 @@ class ExerciseList extends React.Component{
     }
 
   
-    componentDidMount() {
-
+    componentDidMount(){
+        const cookies = new Cookies()
        
-        axios
-          .get("http://localhost:3001/ver_coemntarios")
-          .then((response) => {
-            console.log(response);
-            this.setState({ /*data: response.data */});
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      }
+           
+           // eslint-disable-next-line react/no-direct-mutation-state
+           this.state = {
+               carnet_login_get:  cookies.get('idUsuario')
+           }
+           axios.post("http://localhost:3001/BusquedaUsuarioCursos",{
+               carnet_login_get:  this.state.carnet_login_get,
+           }).then((response)=>{
+               this.setState({data:response.data });
+              
+           })
+            
+           .catch(error=>{
+               
+           })
+       
+       }
     render(){ 
      
     return(

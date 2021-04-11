@@ -20,10 +20,8 @@ class Exercises extends React.Component{
 
 
 
-   
-
+   //Radios Buttons
         if(global.NProfesor=="" && global.filtro=="Profesor"){
-         
             alert(global.filtro)
             cookies.set('rutaPublicaciones','http://localhost:3001/ver_publicacionProfesores',{path: '/'})
         }
@@ -31,27 +29,32 @@ class Exercises extends React.Component{
         if(global.NCurso=="" && global.filtro=="Curso"){
             cookies.set('rutaPublicaciones','http://localhost:3001/ver_publicacionCrusos',{path: '/'})
             alert(global.filtro)
-
         }
       
-        
         if( global.filtro=="Todos"){
             cookies.set('rutaPublicaciones','http://localhost:3001/ver_publicacion',{path: '/'})
-            alert(global.filtro)
-
+             alert(global.filtro)
         }
        
-       // global.ruta='http://localhost:3001/ver_publicacion';
+   //INdividuales Buttons
+        if(global.NProfesor!="" && global.filtro=="Profesor"){
+          alert(global.NProfesor)
+          cookies.set('rutaPublicaciones','http://localhost:3001/verpublicacion_profesor/'+global.NProfesor,{path: '/'})
+        }
+
+        if(global.NCurso!="" && global.filtro=="Curso"){
+           cookies.set('rutaPublicaciones','http://localhost:3001/verpublicacion_Curso/'+global.NCurso,{path: '/'})
+            alert(global.NCurso)
+        }
+
+   //--------------
         
-        //window.location.href = window.location.href;
-        //window.location.replace('');
+        window.location.href = window.location.href;
+        window.location.replace('');
     }
 
     onValueChange(event) {
-  
-        global.filtro= event.target.value
-
-   
+        global.filtro= event.target.value   
       }
 
 

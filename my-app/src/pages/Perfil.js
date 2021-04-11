@@ -19,7 +19,7 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { CursosAprobadosMain, PerfilTable } from "./Orders";
 import DropPerfil from "../components/DropPerfil";
 import CA from '../components/CAPerfil'
-
+import PU from '../components/MIperfil'
 
 
 const drawerWidth = 240;
@@ -169,16 +169,34 @@ export default function Dashboard() {
 
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={2}>
+
+
             <Grid item xs={12}>
               <Paper className={fixedHeightPaper}>
         
-              <h1>Mi permil</h1>
+              <h1> Mi Perfil</h1>
 
 
-
+              <PU/>
 
               </Paper>
             </Grid>
+
+
+           
+            <Grid item xs={12}>
+              <Paper className={fixedHeightPaper}>
+        
+              <input ></input>
+
+
+              <PU/>
+
+              </Paper>
+            </Grid>
+
+
+
             <Grid item xs={12}>
               <Paper className={fixedHeightPaper}>
                 <DropPerfil />

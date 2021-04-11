@@ -154,7 +154,8 @@ export default function Dashboard() {
     setOpen(false);
   };
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
-
+  const cookies = new Cookies();
+  
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -219,7 +220,8 @@ export default function Dashboard() {
             </Grid><br/>
         <Grid item xs={12}>
               <Paper className={fixedHeightPaper}>
-              <h1>User</h1>
+                
+              <h1>Usuario:</h1>
               <PU/>
               </Paper>
             </Grid>
