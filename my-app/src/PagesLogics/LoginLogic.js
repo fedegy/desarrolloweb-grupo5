@@ -1,7 +1,7 @@
 import React from 'react'
 import SignIn from '../pages/SignIn'
 import axios from 'axios';
-
+import Cookies from 'universal-cookie'
 
 
 class LoginLogic extends React.Component{
@@ -32,6 +32,12 @@ class LoginLogic extends React.Component{
         .then(response=>{
             if(response.length>0){
          
+                global.id= this.state.carnet_login_get
+             
+                const cookies = new Cookies();
+                cookies.set('idUsuario',this.state.carnet_login_get,{path: '/'});
+                cookies.set('rutaPublicaciones','http://localhost:3001/ver_publicacion',{path: '/'})
+             
                 window.location.href="./Publicaciones";
             }else{
                 alert('El usuario o la contraseña no son correctos');

@@ -1,18 +1,29 @@
 import React   from 'react'
 import ExerciseList from '../components/ExerciseList'
 import AddButton from '../components/AddButton'
-
+import Cookies from 'universal-cookie'
 
 global.NProfesor='';
 global.NCurso='';
-
+global.ruta='';
 class Exercises extends React.Component{
- 
+
+
     state = {ruta:'',
         data:
         []
     }
 
+    handleClick (){
+
+
+      
+       
+       // global.ruta='http://localhost:3001/ver_publicacion';
+        
+        //window.location.href = window.location.href;
+        //window.location.replace('');
+    }
 
     handleonChnageCurso=(e)=>{
         e.preventDefault();
@@ -25,11 +36,7 @@ class Exercises extends React.Component{
         global.NProfesor= e.target.value
         console.log(global.NProfesor)
     }
-    pop=(e)=>{
-     
-        this.state.ruta = 'http://localhost:3001/ver_publicacion'
-        console.log( this.state.ruta)
-    }
+  
 
 
     async componentDidMount(){
@@ -37,22 +44,26 @@ class Exercises extends React.Component{
     }
 
     fetchObtencion = async (e) => {
+        const cookies = new Cookies();
+        alert(cookies.get('rutaPublicaciones'))
 
     try{
-        console.log('activacopnes')
-      
+        console.log('rutas:')
+        this.state.ruta = cookies.get('rutaPublicaciones')
         let res = await fetch(this.state.ruta)
         let data = await res.json()
        this.setState({data})
+       
     }catch(error){}
       //  console.log(data)
     }
     
-
+  
     
     render(){
-        return(
+     
 
+        return(
         <div> 
                <div className="form-group">
                     <label>
@@ -91,12 +102,17 @@ class Exercises extends React.Component{
                         onChange={this.handleonChnageCurso}
                          />
                     <br/>
-                    <button>Todo</button>
-                    <button onClick={this.pop}>Filtrar</button>
+                    <button onClick={this.getData}>Todo</button>
+                    <button onClick={this.handleClick}>Filtrar</button>
+                    <button onClick={this.handleClick}>add</button>
+                 
                  
                       </div>
 
             <AddButton/>
+
+            
+          
             <ExerciseList 
             exercises={this.state.data}
             />

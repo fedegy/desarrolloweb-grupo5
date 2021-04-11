@@ -51,8 +51,6 @@ return(
                 
         
                     <button class="redondo" /*onClick={handleClick}*/ onClick={handleClick}>⬇⬇⬇  </button>
-                   
-
                 </div>
             </div>
         </div>
