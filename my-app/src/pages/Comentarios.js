@@ -4,13 +4,15 @@ import Card from '../components/Card'
 import axios from 'axios'
 import Globales from '../components/globales'
 import Cookies from 'universal-cookie'
-import ComentariosNew from '../components/ComentarioNew'
+
 
 global.Descripcion=''
 class ExerciseList extends React.Component{
     state = {
         data:
-        []
+        [{Descripcion: "Buen catedratico",
+        Registro: 202000119,
+        id_publicacion: 1}]
     }
     
     
@@ -26,16 +28,16 @@ class ExerciseList extends React.Component{
 
             const cookies = new Cookies();
 
-    
+     
+            window.location.href = window.location.href;
+            window.location.replace('');
             axios.post("http://localhost:3001/crear_comentario",{
                 id_publicacion:  cookies.get('idCard'),
                 Registro:cookies.get('idUsuario'),
                 Descripcion:global.Descripcion,
             }).then((response)=>{
                 this.setState({data:response.data })
-
-                window.location.href = window.location.href;
-                window.location.replace('');
+                window.location.href="./Comentaries";   
     
             })
 
@@ -72,6 +74,7 @@ console.log(Card.datos)
     return(
         <div>
 
+            
             <TableContainer>
                 <Table> 
                     <TableHead>
@@ -81,14 +84,15 @@ console.log(Card.datos)
                         </TableRow>
                     </TableHead> 
 
-                 
-                  
-                        <ComentariosNew
-                        
-                        exercises={this.state.data}
-                        
-                        />
-                  
+                    <TableBody>
+                    {this.state.data.map((data)=>(
+                        <TableRow>
+                        <TableCell>{data.Registro}</TableCell>
+                        <TableCell>{data.Descripcion}</TableCell>
+                        </TableRow>
+                    ))} 
+
+                    </TableBody>
                 </Table>
             </TableContainer>
 

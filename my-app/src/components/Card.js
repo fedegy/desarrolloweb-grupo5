@@ -32,11 +32,9 @@ import Cookies from 'universal-cookie'
 
             const datos= response.data
             console.log( cookies.get('idCard'))
-           
-            window.location.href="./Comentarios";
-          
+            window.location.href="./Comentarios";  
         })   
-
+        
       
     }
     

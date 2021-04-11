@@ -5,6 +5,9 @@ import Registro from "../PagesLogics/LoginLogic";
 import Post from "../pages/Exercises";
 import New from "../pages/ExercisesNew";
 import tablas from "../pages/Comentarios";
+import tabletas from '../components/ComentarioNew'
+
+
 import Dashboard from "../pages/Dashboard";
 
 import Usuarios from "../pages/Usuarios";
@@ -17,6 +20,7 @@ import test from '../pages/test'
 
 
 import tablasCA from "../components/CAPerfil";
+
 
 const App = () => {
   return (
@@ -34,6 +38,10 @@ const App = () => {
       <Route exact path="/Perfil" component={Perfil} /> 
 
       <Route exact path="/Comentarios" component={tablas} />
+      
+      <Route exact path="/Comentaries" component={tabletas} />
+
+
       <Route exact path="/tablaCA" component={tablasCA} />
      
        
