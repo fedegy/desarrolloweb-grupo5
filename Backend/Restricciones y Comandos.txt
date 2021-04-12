@@ -14,3 +14,6 @@ Instala mysql junto a dependencias necesarias de express
 
 npm install nodemon
 Instala nodemon
+
+Instalar cors
+npm install cors

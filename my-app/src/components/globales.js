@@ -1,0 +1,3 @@
+global.usuario=""
+global.idComentario=""
+
